@@ -1,0 +1,31 @@
+#!/bin/zsh
+#
+# Darwin-specific initializations
+#
+
+setopt combining_chars
+
+# Enable color in OS X's native ls
+CLICOLOR=y
+
+# X11 for OS X doesn't set the fully qualified DISPLAY name
+#[[ -n $DISPLAY ]] && export DISPLAY=:0.0
+
+# CLI stuff is happier with this set
+JAVA_HOME="$(/usr/libexec/java_home)"
+
+# Target OS X compilers at current OS rev or better
+[[ -x /usr/bin/sw_vers ]] && \
+   MACOSX_DEPLOYMENT_TARGET=`/usr/bin/sw_vers -productVersion | sed -e 's/^\([0-9]*\.[0-9]*\).*/\1/'`
+
+# Use llvm-gcc to compile homebrew stuff, also enables LTO via -O4
+#HOMEBREW_USE_CLANG=1
+HOMEBREW_CC=clang
+
+## defaults
+
+# unconditionally enable font smoothing on external monitors
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+
+# disable new window animation under Lion
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
