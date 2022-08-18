@@ -1,5 +1,55 @@
+[alias]
+        st = status
+        ci = commit
+        co = checkout
+        #up = remote update --prune
+        de = describe --all
+        k = !gitk --all
+        l  = log --stat --decorate
+        lc = log ORIG_HEAD.. --stat --no-merges --decorate
+        lg = log --oneline --decorate
+        dc = diff --cached
+        diffc = diff --color-words
+        changes  = diff --name-status -r
+        diffstat = diff --stat -r
+        rv = remote -v
+[branch]
+        autosetuprebase = always
+[clean]
+        requireForce = true
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+        ui = auto
+[color "diff"]
+        commit = blue
+[core]
+        fsync = all
+        preloadindex = true
+        excludesfile = ~/.gitignore_global
+[diff]
+        renames = copy
+[gc]
+        pruneexpire = 30 days
+[github]
+        user = sudish
+[gui]
+        pruneduringfetch = true
 [init]
 	defaultBranch = master
+[merge]
+        stat = true
+        log = true
+        verbosity = 2
+        conflictstyle = diff3
+[pack]
+        threads = 0
+[push]
+        default = current
+[ui]
+        color = true
 [user]
-	email = sudish@gmail.com
-	name = Sudish Joseph
+        name = Sudish Joseph
+        email = sudish@gmail.com
