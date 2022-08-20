@@ -1,7 +1,10 @@
 local wezterm = require 'wezterm';
 return {
-  color_scheme = "LiquidCarbon",
-  font = wezterm.font("MesloLGS NF"),
-  font_size = 10.0,
+  -- color_scheme = "LiquidCarbon",
+  color_scheme = "Gruvbox dark, soft (base16)",
+  -- font = wezterm.font("MesloLGS NF"),
+  -- font = wezterm.font("FiraCode Nerd Font"),
+  font = wezterm.font("FantasqueSansMono Nerd Font"),
+  font_size = 12.0,
   window_decorations = "RESIZE",
 }
