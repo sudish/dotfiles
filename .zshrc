@@ -92,6 +92,16 @@ alias dotfile='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # checkout with:
 # git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git $HOME
 
+# helper to clone a command's completion
+# from https://unix.stackexchange.com/a/496759
+compdefas () {
+  if (($+_comps[$1])); then
+    compdef $_comps[$1] ${^@[2,-1]}=$1
+  fi
+}
+
+compdefas git dotfile
+
 # aliases
 alias d='dirs -v'
 alias egrep="egrep $GREP_COLOR_OPTS"
