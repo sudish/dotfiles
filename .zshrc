@@ -87,9 +87,13 @@ grep $GREP_COLOR_OPTS localhost /etc/hosts >&| /dev/null || \
     unset GREP_COLOR_OPTS
 ACK_COLOR_MATCH='bold red'
 
+# dotfiles maintenance
+alias dotfile='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# checkout with:
+# git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git $HOME
+
 # aliases
 alias d='dirs -v'
-alias dotfile='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias egrep="egrep $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
 alias fgrep="fgrep $GREP_COLOR_OPTS"
