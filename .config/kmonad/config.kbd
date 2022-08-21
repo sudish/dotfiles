@@ -1,0 +1,65 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-CATEX_TECH._82EC-S_CA2019030001-event-kbd")
+  output (uinput-sink "KMonad output"
+    "/usr/bin/sleep 1 && /usr/bin/setxkbmap -option compose:ralt")
+  cmp-seq ralt
+  ;; cmp-seq-delay 5 ;; 5ms delay between each compose-key sequence press
+  fallthrough true
+  allow-cmd false
+)
+
+;; Niz Plum 82EC.  Fn-keys have been added directly.
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12       del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup pause
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn ins
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
+  lctl lmet lalt           spc            ralt      rctl left down rght
+)
+
+;; Tap Hold keys
+(defalias
+  a_S (tap-hold-next-release 300 a lsft)
+  s_C (tap-hold-next-release 300 s lctl)
+  d_A (tap-hold-next-release 300 d lalt)
+  f_M (tap-hold-next-release 300 f lmet)
+
+  j_M (tap-hold-next-release 300 j lmet)
+  k_A (tap-hold-next-release 300 k lalt)
+  l_C (tap-hold-next-release 300 l rctl)
+  ;_S (tap-hold-next-release 300 ; rsft)
+)
+
+;; Toggle between tap hold and plain layers using the pause key
+(defalias
+  to_plain (tap-hold-next-release 1000 pause (layer-add plain))
+  to_main  (tap-hold-next-release 1000 pause (layer-rem plain))
+)
+
+(deflayer main   ;; modifier keys on the home row
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12       del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup @to_plain
+  caps @a_S @s_C @d_A @f_M g    h    @j_M @k_A @l_C @;_S '    ret       pgdn ins
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
+  lctl lmet lalt           spc            ralt      rctl left down rght
+)
+
+;;(deflayer plain
+;;  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12       del
+;;  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
+;;  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup @to_main
+;;  caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn ins
+;;  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
+;;  lctl lmet lalt           spc            ralt      rctl left down rght
+;;)
+
+(deflayer plain  ;; restore keys to normal behavior
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _   
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _   
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    @to_main
+  _    a    s    d    f    _    _    j    k    l    ;    _    _         _    _   
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _      
+  _    _    _              _              _         _    _    _    _   
+)
