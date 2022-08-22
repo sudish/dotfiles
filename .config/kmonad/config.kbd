@@ -33,8 +33,8 @@
 
 ;; Toggle between tap hold and plain layers using the pause key
 (defalias
-  to_plain (tap-hold-next-release 1000 pause (layer-add plain))
-  to_main  (tap-hold-next-release 1000 pause (layer-rem plain))
+  to_plain (layer-add plain)
+  to_main  (layer-rem plain)
 )
 
 (deflayer main   ;; modifier keys on the home row
@@ -42,8 +42,8 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup @to_plain
   caps @a_S @s_C @d_A @f_M g    h    @j_M @k_A @l_C @;_S '    ret       pgdn ins
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
-  lctl lmet lalt           spc            ralt      rctl left down rght
+  XX   z    x    c    v    b    n    m    ,    .    /    XX   up        end    
+  XX   XX   XX             spc            XX        XX   left down rght
 )
 
 ;;(deflayer plain
@@ -60,6 +60,6 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _   
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    @to_main
   _    a    s    d    f    _    _    j    k    l    ;    _    _         _    _   
-  _    _    _    _    _    _    _    _    _    _    _    _    _         _      
-  _    _    _              _              _         _    _    _    _   
+  lsft _    _    _    _    _    _    _    _    _    _    rsft _         _      
+  lctl lmet lalt           _              ralt      rctl _    _    _   
 )
