@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-CATEX_TECH._82EC-S_CA2019030001-event-kbd")
+  input  (device-file "/home/sj/.config/kmonad/kbd-device")
   output (uinput-sink "KMonad output"
     "/usr/bin/sleep 1 && /usr/bin/setxkbmap -option compose:ralt")
   cmp-seq ralt
