@@ -14,7 +14,7 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup pause
   caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn ins
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end
   lctl lmet lalt           spc            ralt      rctl left down rght
 )
 
@@ -42,24 +42,15 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup @to_plain
   caps @a_S @s_C @d_A @f_M g    h    @j_M @k_A @l_C @;_S '    ret       pgdn ins
-  XX   z    x    c    v    b    n    m    ,    .    /    XX   up        end    
-  XX   XX   XX             spc            XX        XX   left down rght
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end
+  lctl lmet lalt           spc            ralt      rctl left down rght
 )
 
-;;(deflayer plain
-;;  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12       del
-;;  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc home print
-;;  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgup @to_main
-;;  caps a    s    d    f    g    h    j    k    l    ;    '    ret       pgdn ins
-;;  lsft z    x    c    v    b    n    m    ,    .    /    rsft up        end    
-;;  lctl lmet lalt           spc            ralt      rctl left down rght
-;;)
-
 (deflayer plain  ;; restore keys to normal behavior
-  _    _    _    _    _    _    _    _    _    _    _    _    _         _   
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _   
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    @to_main
-  _    a    s    d    f    _    _    j    k    l    ;    _    _         _    _   
-  lsft _    _    _    _    _    _    _    _    _    _    rsft _         _      
-  lctl lmet lalt           _              ralt      rctl _    _    _   
+  _    a    s    d    f    _    _    j    k    l    ;    _    _         _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _              _              _         _    _    _    _
 )
