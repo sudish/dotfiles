@@ -88,7 +88,7 @@ grep $GREP_COLOR_OPTS localhost /etc/hosts >&| /dev/null || \
 ACK_COLOR_MATCH='bold red'
 
 # dotfiles maintenance
-alias dotfile='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias c='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # checkout with:
 # git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git $HOME
 
@@ -100,7 +100,7 @@ compdefas () {
   fi
 }
 
-compdefas git dotfile
+compdefas git c
 
 # aliases
 alias d='dirs -v'
@@ -149,6 +149,9 @@ bindkey '' backward-delete-char
 # search history using entered prefix.
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
+autoload -Uz history-beginning-search-menu
+zle -N history-beginning-search-menu
+bindkey '\eP' history-beginning-search-menu
 
 # Insert $!, repeat for earlier history
 autoload -U smart-insert-last-word
