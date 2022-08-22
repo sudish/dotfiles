@@ -53,6 +53,7 @@ require('nvim-autopairs').setup {
 -- Telescope
 require('telescope').setup {}
 require('telescope').load_extension('fzf')
+vim.api.nvim_set_keymap('n', '<Leader>ff', ':lua require("telescope.builtin").find_files({ hidden = true })<CR>', { noremap = true, silent = true })
 require 'nvim-web-devicons'.setup { default = true }
 
 -- diagnostics
@@ -88,6 +89,7 @@ if cmp ~= nil then
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
+      { name = 'crates' },
     }, {
       { name = 'buffer' },
     })
@@ -221,3 +223,31 @@ require('nvim-treesitter.configs').setup {
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 10000
+
+-- null-ls
+require("null-ls").setup({
+  sources = {
+    require("null-ls").builtins.formatting.stylua,
+    require("null-ls").builtins.diagnostics.eslint,
+    require("null-ls").builtins.completion.spell,
+  },
+})
+
+-- language-specific setups
+require('crates').setup {}
+local rt = require("rust-tools")
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+  null_ls = {
+    enabled = true,
+    name = "crates.nvim",
+  },
+})
+rt.inlay_hints.enable()
