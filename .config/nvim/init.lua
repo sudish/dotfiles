@@ -53,7 +53,8 @@ require('nvim-autopairs').setup {
 -- Telescope
 require('telescope').setup {}
 require('telescope').load_extension('fzf')
-vim.api.nvim_set_keymap('n', '<Leader>ff', ':lua require("telescope.builtin").find_files({ hidden = true })<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>tf', ':lua require("telescope.builtin").find_files({ hidden = true })<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>tb', ':lua require("telescope.builtin").buffers({ show_all_buffers = true })<CR>', { noremap = true, silent = true })
 require 'nvim-web-devicons'.setup { default = true }
 
 -- diagnostics
@@ -251,3 +252,27 @@ rt.setup({
   },
 })
 rt.inlay_hints.enable()
+
+-- Debugging
+local dap = require('dap')
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- must be absolute path
+  name = 'lldb'
+}
+local dap = require('dap')
+dap.configurations.rust = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
+}
+dap.configurations.c = dap.configurations.rust
+dap.configurations.cpp = dap.configurations.rust
