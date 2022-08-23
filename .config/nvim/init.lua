@@ -15,8 +15,12 @@ vim.o.softtabstop = 2
 
 require('packer-plugins')
 
+require('gruvbox').setup {
+  contrast = 'soft',
+}
 vim.o.background = 'dark'
-vim.g.gruvbox_italic = 1
+-- vim.g.gruvbox_italic = 1
+-- vim.g.gruvbox_bold = 1
 vim.cmd [[colorscheme gruvbox]]
 
 require('lualine').setup {

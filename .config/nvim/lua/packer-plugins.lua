@@ -8,7 +8,8 @@ return require('packer').startup(function(use)
   use 'MunifTanjim/nui.nvim'
 
   -- colorscheme
-  use 'gruvbox-community/gruvbox'
+  -- use 'gruvbox-community/gruvbox'
+  use 'ellisonleao/gruvbox.nvim'
 
   -- LSP configs
   use 'neovim/nvim-lspconfig'
