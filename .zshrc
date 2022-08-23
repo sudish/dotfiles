@@ -147,8 +147,10 @@ bindkey '' backward-delete-char
 bindkey '' backward-delete-char
 
 # search history using entered prefix.
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+bindkey '\e[1;5A' history-beginning-search-backward
+bindkey '\e[1;5B' history-beginning-search-forward
+
+# history search with a menu
 autoload -Uz history-beginning-search-menu
 zle -N history-beginning-search-menu
 bindkey '\eP' history-beginning-search-menu
@@ -175,5 +177,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # history-substring-search must follow syntax-highlighting - and everything else really
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 # bind to control up- and down-arrow
-bindkey '\e[1;5A' history-substring-search-up
-bindkey '\e[1;5B' history-substring-search-down
+bindkey '\e[A' history-substring-search-up
+bindkey '\e[B' history-substring-search-down
