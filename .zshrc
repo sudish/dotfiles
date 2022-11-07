@@ -104,6 +104,7 @@ compdefas git c
 
 # aliases
 alias d='dirs -v'
+alias dircomp='git diff --no-index --name-status'
 alias egrep="egrep $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
 alias fgrep="fgrep $GREP_COLOR_OPTS"
