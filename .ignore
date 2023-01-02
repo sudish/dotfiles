@@ -1,0 +1,5 @@
+.git/
+.cache/
+.dotfiles/
+.npm/
+.local/share/nvim/

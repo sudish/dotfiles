@@ -54,3 +54,20 @@ cmp.setup.cmdline(':', {
       { name = 'cmdline' }
     })
 })
+
+-- Add hidden=true
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+  },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  },
+}
