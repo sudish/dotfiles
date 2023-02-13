@@ -12,6 +12,10 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 
+vim.o.whichwrap = vim.o.whichwrap .. "<,>,[,]"
+
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+
 vim.cmd [[colorscheme gruvbox]]
 
 require('lualine').setup {
