@@ -22,6 +22,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+[ -d ~/.local/bin ] && PATH=~/.local/bin:$PATH
+
 # export every environment variable
 setopt all_export
 
@@ -124,7 +126,7 @@ cdg() {
 }
 
 # Powerlevel10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel9k.zsh-theme
+source ~/.zsh.d/submodules/powerlevel10k/powerlevel9k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -170,13 +172,13 @@ bindkey '\em' copy-earlier-word
 
 # Fish-like autosuggestions for zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=250"
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh.d/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # shell syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh.d/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # history-substring-search must follow syntax-highlighting - and everything else really
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh.d/submodules/zsh-history-substring-search/zsh-history-substring-search.zsh
 # bind to control up- and down-arrow
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down

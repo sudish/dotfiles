@@ -1,0 +1,12 @@
+[submodule ".zsh.d/submodules/powerlevel10k"]
+	path = .zsh.d/submodules/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+[submodule ".zsh.d/submodules/zsh-autosuggestions"]
+	path = .zsh.d/submodules/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule ".zsh.d/submodules/zsh-syntax-highlighting"]
+	path = .zsh.d/submodules/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".zsh.d/submodules/zsh-history-substring-search"]
+	path = .zsh.d/submodules/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
