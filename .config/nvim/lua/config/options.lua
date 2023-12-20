@@ -3,6 +3,7 @@
 -- Add any additional options here
 
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,[,]"
+vim.g.autoformat = false
 
 -- don't auto continue comments
 vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
