@@ -22,6 +22,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+[ -d ~/.ghcup/bin ] && PATH=~/.ghcup/bin:$PATH
 [ -d ~/.local/bin ] && PATH=~/.local/bin:$PATH
 
 # export every environment variable
