@@ -6,11 +6,19 @@ return {
     --   end,
   },
 
+  {
+    "rebelot/kanagawa.nvim",
+    --   config = function()
+    --     require("kanagawa").setup({ theme = "dragon" })
+    --   end,
+  },
+
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox"
+      colorscheme = "gruvbox",
+      -- colorscheme = "kanagawa",
     },
   },
 }
