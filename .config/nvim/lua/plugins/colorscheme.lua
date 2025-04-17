@@ -1,16 +1,18 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
-    -- config = function()
-    --   require("gruvbox").setup({ contrast = "hard" })
-    -- end,
+    opts = {
+      contrast = "", -- can be "hard", "soft" or empty string
+      transparent_mode = true,
+    }
   },
 
   {
     "rebelot/kanagawa.nvim",
-    --   config = function()
-    --     require("kanagawa").setup({ theme = "dragon" })
-    --   end,
+    opts = {
+      keywordStyle = { italic = false },
+      theme = "wave",              -- "wave", "dragon", "lotus" (light)
+    }
   },
 
   -- Configure LazyVim to load gruvbox
