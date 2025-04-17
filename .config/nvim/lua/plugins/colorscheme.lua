@@ -9,16 +9,16 @@ return {
         NonText = { fg = "#928374" },
         -- Tabs, trailing space & nbsp and other listchars
         Whitespace = { fg = "#7c6f64" },
-      }
-    }
+      },
+    },
   },
 
   {
     "rebelot/kanagawa.nvim",
     opts = {
       keywordStyle = { italic = false },
-      theme = "wave",              -- "wave", "dragon", "lotus" (light)
-    }
+      theme = "wave", -- "wave", "dragon", "lotus" (light)
+    },
   },
 
   -- Configure LazyVim to load gruvbox
