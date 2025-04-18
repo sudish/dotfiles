@@ -5,10 +5,11 @@ return {
       contrast = "", -- can be "hard", "soft" or empty string
       transparent_mode = true,
       overrides = {
-        -- NonText must be readable so use gruvbox comment color
-        NonText = { fg = "#928374" },
+        -- NonText must be readable so use lighter gruvbox colors
+        -- NonText = { fg = "#928374" }, -- comment color
+        NonText = { fg = "#7c6f64" }, -- dark4
         -- Tabs, trailing space & nbsp and other listchars
-        Whitespace = { fg = "#7c6f64" },
+        Whitespace = { fg = "#665c54" }, -- dark3
       },
     },
   },
