@@ -1,4 +1,4 @@
--- Override behavior of default LazyVim plugins
+-- default LazyVim plugin
 return {
   {
     "folke/snacks.nvim",
