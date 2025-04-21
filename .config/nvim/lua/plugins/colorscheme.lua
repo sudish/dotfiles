@@ -10,6 +10,9 @@ return {
         NonText = { fg = "#7c6f64" }, -- dark4
         -- Tabs, trailing space & nbsp and other listchars
         Whitespace = { fg = "#665c54" }, -- dark3
+        -- Missing in gruvbox
+        TreesitterContext = { link = "Folded" },
+        TreesitterContextLineNumber = { link = "CursorLineNr" },
       },
     },
   },
