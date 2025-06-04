@@ -93,7 +93,9 @@ ACK_COLOR_MATCH='bold red'
 # dotfiles maintenance
 alias c='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # checkout with:
-# git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git $HOME
+#   git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git
+#   mv dotfiles/.* $HOME
+# the last step may need help like `cp -a dotfiles/.config/* .config` etc
 
 # helper to clone a command's completion
 # from https://unix.stackexchange.com/a/496759
