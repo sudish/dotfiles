@@ -90,22 +90,31 @@ grep $GREP_COLOR_OPTS localhost /etc/hosts >&| /dev/null || \
     unset GREP_COLOR_OPTS
 ACK_COLOR_MATCH='bold red'
 
-# dotfiles maintenance
-alias c='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-# checkout with:
+# dotfiles
+#
+# first checkout into ~/dotfiles  with:
+#   cd
 #   git clone --separate-git-dir=$HOME/.dotfiles git@github.com:sudish/dotfiles.git
+#
+# then move all the dotfiles into ~:
 #   mv dotfiles/.* $HOME
-# the last step may need help like `cp -a dotfiles/.config/* .config` etc
-
+# this last step may need help like `cp -a dotfiles/.config/* .config` etc
+#
+# finally initialize the ~/.git file with:
+#   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status
+#
+# this alias is no longer needed as any git operation with --git-dir will create ~/.git
+# alias c='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+#
 # helper to clone a command's completion
 # from https://unix.stackexchange.com/a/496759
-compdefas () {
-  if (($+_comps[$1])); then
-    compdef $_comps[$1] ${^@[2,-1]}=$1
-  fi
-}
-
-compdefas git c
+# compdefas () {
+#   if (($+_comps[$1])); then
+#     compdef $_comps[$1] ${^@[2,-1]}=$1
+#   fi
+# }
+#
+# compdefas git c
 
 # aliases
 alias d='dirs -v'
