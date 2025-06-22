@@ -123,6 +123,7 @@ alias egrep="egrep $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
 alias fgrep="fgrep $GREP_COLOR_OPTS"
 alias jobs='\jobs -lp'
+alias lg=lazygit
 alias m='less -R'
 alias md=mkdir
 alias v=nvim
