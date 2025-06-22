@@ -4,6 +4,10 @@ return {
   -- opts will be merged with the parent spec
   opts = {
     -- a section for each snacks plugin
+    picker = {
+      hidden = true,
+      ignored = true,
+    },
     indent = {
       -- disable all indent guides
       enabled = false,
