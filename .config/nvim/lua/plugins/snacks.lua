@@ -7,6 +7,11 @@ return {
     picker = {
       hidden = true,
       ignored = true,
+      matcher = {
+        cwd_bonus = true,
+        frecency = true,
+        history_bonus = true,
+      },
     },
     indent = {
       -- disable all indent guides
