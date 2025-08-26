@@ -78,11 +78,17 @@ MYSQL_PS1='\u@\h/\d> '
 VERSION_CONTROL=existing	# GNU patch
 #LESS=-R
 
-# enable color ls o/p
-LS_COLOR_OPTS='--color=tty'
-ls $LS_COLOR_OPTS >&| /dev/null || unset LS_COLOR_OPTS
-l () { LC_COLLATE=C ls $LS_COLOR_OPTS -al $* }
-alias ls="LC_COLLATE=C ls $LS_COLOR_OPTS -F"
+if hash eza &>/dev/null; then
+    alias l='eza -al --group-directories-first --icons=auto'
+    alias lt='eza --tree --level=2 --long --icons --git'
+    alias lta='lt -a'
+else
+    # enable color ls o/p
+    LS_COLOR_OPTS='--color=tty'
+    ls $LS_COLOR_OPTS >&| /dev/null || unset LS_COLOR_OPTS
+    l () { LC_COLLATE=C ls $LS_COLOR_OPTS -al $* }
+    alias ls="LC_COLLATE=C ls $LS_COLOR_OPTS -F"
+fi
 
 # enable color grep/ack o/p
 GREP_COLOR_OPTS='--color=auto'
