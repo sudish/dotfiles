@@ -1,7 +1,0 @@
-#!/bin/zsh
-#
-# Cygwin-specific initializations
-#
-
-# Don't warn on windows symlinks
-export CYGWIN="${CYGWIN} nodosfilewarning"

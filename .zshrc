@@ -156,10 +156,6 @@ source ~/.zsh.d/submodules/powerlevel10k/powerlevel9k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# dircolors
-#eval $(dircolors $ZDIR/dircolors.256dark)
-#eval $(dircolors $ZDIR/dircolors.gruvbox)
-
 # zoxide
 eval "$(zoxide init zsh)"
 
