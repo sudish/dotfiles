@@ -26,12 +26,12 @@ return {
   },
 
   -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight",
-      -- colorscheme = "gruvbox",
-      -- colorscheme = "kanagawa",
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "tokyonight",
+  --     -- colorscheme = "gruvbox",
+  --     -- colorscheme = "kanagawa",
+  --   },
+  -- },
 }
