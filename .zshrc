@@ -158,7 +158,7 @@ source ~/.zsh.d/submodules/powerlevel10k/powerlevel9k.zsh-theme
 
 # dircolors
 #eval $(dircolors $ZDIR/dircolors.256dark)
-eval $(dircolors $ZDIR/dircolors.gruvbox)
+#eval $(dircolors $ZDIR/dircolors.gruvbox)
 
 # zoxide
 eval "$(zoxide init zsh)"
