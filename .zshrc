@@ -59,7 +59,7 @@ unset file
 
 # zsh options
 setopt \
-    all_export always_to_end auto_name_dirs auto_pushd complete_aliases \
+    all_export always_to_end auto_name_dirs auto_pushd \
     complete_in_word correct extended_glob extended_history glob_star_short \
     hist_allow_clobber hist_fcntl_lock hist_find_no_dups \
     hist_ignore_all_dups hist_ignore_dups hist_lex_words hist_no_store \
@@ -68,7 +68,7 @@ setopt \
     prompt_subst pushd_ignore_dups pushd_minus pushd_silent pushd_to_home \
     transient_rprompt
 unsetopt \
-    beep bg_nice list_ambiguous multi_func_def nomatch
+    beep bg_nice complete_aliases list_ambiguous multi_func_def nomatch
 
 TZ=EST5EDT
 DIRSTACKSIZE=20
@@ -141,6 +141,7 @@ alias m='less -R'
 alias md=mkdir
 alias v=nvim
 alias wh='whence -csa'
+alias c=chezmoi
 
 # global aliases, active anywhere on a line
 alias -g '*F'='**/*(.)'  # grep foo *F -> all files, including subdirs
