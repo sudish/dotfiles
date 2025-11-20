@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Swiftpoint X1 Control Panel
+Comment=Swiftpoint X1 Control Panel
+Exec="/home/sj/Apps/Swiftpoint X1 Control Panel 3.0.7.20/Swiftpoint X1 Control Panel"
+Terminal=false
+Type=Application
+Icon=/home/sj/.local/share/applications/icons/SwiftpointLogo.jpg
+StartupNotify=true
