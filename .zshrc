@@ -99,8 +99,7 @@ fi
 
 # enable color grep/ack o/p
 GREP_COLOR_OPTS='--color=auto'
-grep $GREP_COLOR_OPTS localhost /etc/hosts >&| /dev/null || \
-    unset GREP_COLOR_OPTS
+grep $GREP_COLOR_OPTS localhost /etc/hosts >&| /dev/null || unset GREP_COLOR_OPTS
 ACK_COLOR_MATCH='bold red'
 
 # dotfiles
@@ -113,28 +112,14 @@ ACK_COLOR_MATCH='bold red'
 #   mv dotfiles/.* $HOME
 # this last step may need help like `cp -a dotfiles/.config/* .config` etc
 #
-# finally initialize the ~/.git file with:
-#   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status
-#
-# this alias is no longer needed as any git operation with --git-dir will create ~/.git
-# alias c='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-#
-# helper to clone a command's completion
-# from https://unix.stackexchange.com/a/496759
-# compdefas () {
-#   if (($+_comps[$1])); then
-#     compdef $_comps[$1] ${^@[2,-1]}=$1
-#   fi
-# }
-#
-# compdefas git c
+# echo "gitdir: /home/sj/.dotfiles" > ~/.git
 
 # aliases
 alias d='dirs -v'
 alias dcmp='git diff --no-index --name-status'
-alias egrep="egrep $GREP_COLOR_OPTS"
+alias egrep="grep -E $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
-alias fgrep="fgrep $GREP_COLOR_OPTS"
+alias fgrep="grep -F $GREP_COLOR_OPTS"
 alias jobs='\jobs -lp'
 alias lg=lazygit
 alias m='less -R'

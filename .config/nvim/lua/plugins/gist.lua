@@ -1,4 +1,3 @@
--- default LazyVim plugin
 return {
   {
     "Rawnly/gist.nvim",
@@ -6,8 +5,8 @@ return {
     config = true
   },
   -- `GistsList` opens the selected gist in a terminal buffer,
-  -- nvim-unception uses neovim remote rpc functionality to open the
-  -- gist in an actual buffer and prevents neovim buffer inception
+  -- nvim-unception uses neovim remote rpc functionality to open the gist in an actual buffer
+  -- and prevents neovim buffer inception
   {
     "samjwill/nvim-unception",
     lazy = false,

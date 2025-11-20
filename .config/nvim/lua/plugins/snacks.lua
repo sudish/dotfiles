@@ -5,6 +5,7 @@ return {
   opts = {
     -- a section for each snacks plugin
     picker = {
+      enabled = true,
       hidden = true,
       ignored = true,
       matcher = {
@@ -21,5 +22,8 @@ return {
       --   enabled = false,
       -- },
     },
+    scope = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
   },
 }
