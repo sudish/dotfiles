@@ -13,12 +13,14 @@
 .config/QtProject.conf
 .config/Swiftpoint X1 Control Panel/
 .config/Typora/
+.config/autostart/
 .config/brave-flags.conf
 .config/btop/
 .config/chezmoi/
 .config/chromium-flags.conf
 .config/chromium/
 .config/dconf/
+.config/elephant/
 .config/environment.d/
 .config/fastfetch/
 .config/fcitx/
@@ -33,6 +35,7 @@
 .config/hypr/hyprlock.conf
 .config/hypr/hyprsunset.conf
 .config/hypr/looknfeel.conf
+.config/hypr/xdph.conf
 .config/ibus/
 .config/imv/
 .config/kitty/
@@ -52,6 +55,8 @@
 .config/spotify/
 .config/starship.toml
 .config/swayosd/
+.config/systemd/user/elephant.service
+.config/systemd/user/graphical-session.target.wants/
 .config/systemd/user/omarchy-battery-monitor.service
 .config/systemd/user/omarchy-battery-monitor.timer
 .config/user-dirs.dirs
