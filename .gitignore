@@ -72,8 +72,6 @@
 .pulse-cookie
 .python_history
 .ssh/
-!.ssh/config
-!.ssh/agent-keyfiles
 .steam/
 .steampath
 .steampid

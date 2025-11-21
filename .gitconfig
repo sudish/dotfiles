@@ -1,3 +1,5 @@
+[advice]
+	addIgnoredFile = false
 [alias]
         st = status
         ci = commit
