@@ -4,7 +4,7 @@
   "position": "top",
   "spacing": 0,
   "height": 26,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces", "hyprland/submap"],
+  "modules-left": ["custom/omarchy", "hyprland/workspaces", "niri/workspaces", "hyprland/submap"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
     "group/tray-expander",
@@ -39,6 +39,19 @@
       "5": []
     }
   },
+  "niri/workspaces": {
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "active": "󱓻"
+    }
+  },
   "hyprland/submap": {
     "format": "Keymap: {}",
     "min-length": 30,
@@ -59,7 +72,7 @@
     "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
     "tooltip-format": "Omarchy update available",
     "signal": 7,
-    "interval": 3600
+    "interval": 21600
   },
 
   "cpu": {
@@ -141,7 +154,7 @@
     "modules": ["custom/expand-icon", "tray", "idle_inhibitor"]
   },
   "custom/expand-icon": {
-    "format": " ",
+    "format": "",
     "tooltip": false
   },
   "custom/screenrecording-indicator": {
@@ -152,6 +165,6 @@
   },
   "tray": {
     "icon-size": 12,
-    "spacing": 12
+    "spacing": 17
   }
 }
