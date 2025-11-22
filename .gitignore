@@ -40,11 +40,13 @@
 .config/imv/
 .config/kitty/
 .config/lact/
+.config/lazydocker/
 .config/lazygit/
 .config/libreoffice/
 .config/mako/
 .config/mimeapps.list
 .config/mise/
+.config/niri/config.kdl.*
 .config/nvim/plugin/
 .config/obsidian/
 .config/omarchy.ttf
