@@ -61,6 +61,7 @@
 .config/systemd/user/graphical-session.target.wants/
 .config/systemd/user/omarchy-battery-monitor.service
 .config/systemd/user/omarchy-battery-monitor.timer
+.config/systemd/user/timers.target.wants/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/uwsm/
