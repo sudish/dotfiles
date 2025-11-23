@@ -111,7 +111,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 8
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -173,13 +173,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#33ccff"  // Cyan Blue
+        active-gradient from="#33ccffee" to="#00ff99ee" angle=45
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#44475a"  // Dark Gray
+        inactive-color "#595959aa"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -204,8 +204,8 @@ layout {
         off
 
         width 2
-        active-color "#33ccff"  // Cyan Blue
-        inactive-color "#44475a"  // Dark Gray
+        active-gradient from="#33ccffee" to="#00ff99ee" angle=45
+        inactive-color "#595959aa"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -252,7 +252,7 @@ layout {
         offset x=0 y=4
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#1a1a1aee"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -261,10 +261,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 2
+        right 2
+        top 2
+        bottom 2
     }
 }
 
@@ -334,74 +334,47 @@ animations {
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 
-// Add transparency to unfocused windows
 window-rule {
     match is-focused=false
-
-    // don't touch browsers
     exclude app-id=r#"firefox$|^zen$"#
-
     opacity 0.9
 }
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
+    match is-focused=true
+    exclude app-id=r#"firefox$|^zen$"#
+    opacity 0.97
+}
+
+// Work around WezTerm's initial configure bug by setting an empty default-column-width.
+window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
 
-// Open picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox|zen$"# title="^Picture-in-Picture$"
+    match app-id=r#"(firefox|zen)$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
 // Enable rounded corners for all windows.
-window-rule {
-    geometry-corner-radius 8
-    clip-to-geometry true
-}
+// window-rule {
+//     geometry-corner-radius 8
+//     clip-to-geometry true
+// }
 
 window-rule {
     match app-id=r#"^1Password.*$"#
     block-out-from "screen-capture"
 }
 
-// Floating windows for Omarchy's waybar status apps
+// Floating windows for some apps
 window-rule {
     match app-id="wiremix" // audio
     match app-id="bluetui" // bluetooth
     match app-id="impala"  // wifi
     match app-id="btop"    // cpu
-
-    open-floating true
-}
-
-// System dialogs
-window-rule {
-    match app-id="zenity"
-    open-floating true
-}
-
-window-rule {
+    match app-id="zenity"  // System dialogs
     match app-id="polkit-gnome-authentication-agent-1"
     open-floating true
 }
@@ -409,26 +382,29 @@ window-rule {
 // Citrix Workspace client
 window-rule {
     match app-id="^Wfica$"  // anchor regexp lest we match the Wfica_splash window
-
     open-fullscreen true
     open-focused true
 }
 
-// Default column widths
+// Zoom
+window-rule {
+    match app-id=r#"^chrome-app\.zoom\.us"#
+    default-column-width { proportion 0.28; }
+    default-window-height { proportion 0.5; }
+    opacity 1.0
+}
 
-// Apps with the lowest proprotion (0.28)
 window-rule {
     match app-id="ghostty$"
-
     default-column-width { proportion 0.28; }
 }
 
-// Steam-related
+// Steam: open games on workspace 2, fullscreen
 window-rule {
     match app-id="^steam_app_"
-
-    exclude title="Mod Organizer"
-
+    // disregard MO2 and any of its dialogs
+    exclude title="Mod Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm"
+    open-on-workspace "2"
     open-fullscreen true
     open-focused true
 }
