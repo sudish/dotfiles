@@ -6,7 +6,6 @@
         co = checkout
         #up = remote update --prune
         de = describe --all
-        k = !gitk --all
         l  = log --stat --decorate
         lc = log ORIG_HEAD.. --stat --no-merges --decorate
         lg = log --oneline --decorate
@@ -17,6 +16,7 @@
         rv = remote -v
 [branch]
         autosetuprebase = always
+        sort = -committerdate    # Sort branches by most recent commit first
 [clean]
         requireForce = true
 [color]
@@ -27,11 +27,18 @@
         ui = auto
 [color "diff"]
         commit = blue
+[commit]
+        verbose = true           # Include diff comment in commit message template
+[column]
+        ui = auto                            # Output in columns when possible
 [core]
         fsync = all
         preloadindex = true
         excludesfile = ~/.gitignore_global
 [diff]
+        algorithm = histogram    # Clearer diffs on moved/edited lines
+        colorMoved = plain       # Highlight moved blocks in diffs
+        mnemonicPrefix = true    # More intuitive refs in diff output
         renames = copy
 [gc]
         pruneexpire = 30 days
@@ -50,6 +57,9 @@
         threads = 0
 [push]
         default = current
+        autoSetupRemote = true   # Automatically set upstream branch on push
+[tag]
+        sort = -version:refname  # Sort version numbers as you would expect
 [ui]
         color = true
 [user]
