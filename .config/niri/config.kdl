@@ -266,6 +266,16 @@ layout {
         top 2
         bottom 2
     }
+
+    // Controls the appearance of the tab indicator that appears next to columns in tabbed display mode.
+    tab-indicator {
+        position "top"
+        hide-when-single-tab
+        place-within-column
+        corner-radius 2
+        gaps-between-tabs 4
+        inactive-color "#799959aa"
+    }
 }
 
 // Add lines like this to spawn processes at startup.
