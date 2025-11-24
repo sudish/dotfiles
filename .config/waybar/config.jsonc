@@ -137,21 +137,13 @@
       "default": ["", "", ""]
     }
   },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    },
-    "timeout": 60.5
-  },
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
       "children-class": "tray-group-item"
     },
-    "modules": ["custom/expand-icon", "tray", "idle_inhibitor"]
+    "modules": ["custom/expand-icon", "tray"]
   },
   "custom/expand-icon": {
     "format": "",
