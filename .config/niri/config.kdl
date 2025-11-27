@@ -300,6 +300,9 @@ spawn-sh-at-startup "systemctl --user import-environment $(env | cut -d'=' -f 1)
 spawn-at-startup    "dbus-update-activation-environment" "--systemd" "--all"
 // End of Omarchy startup
 
+// Steam has problems starting after Citrix Workspace, so run it headless at login
+spawn-at-startup    "uwsm-app" "--" "steam" "-silent"
+
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
@@ -410,13 +413,14 @@ window-rule {
     default-column-width { proportion 0.28; }
 }
 
-// Steam: open games on workspace 2, fullscreen
+// Steam: open games in their own workspace
 window-rule {
     match app-id="^steam_app_"
-    // disregard MO2 and any of its dialogs
-    exclude title="Mod Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm"
+    // Skip MO2 and its dialogs.
+    // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
+    exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm"#
     open-on-workspace "3"
-    open-fullscreen true
+    // open-fullscreen true
     open-focused true
 }
 
