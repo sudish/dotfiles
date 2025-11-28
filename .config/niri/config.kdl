@@ -349,13 +349,13 @@ animations {
 
 window-rule {
     match is-focused=false
-    exclude app-id=r#"firefox$|^zen$"#
+    exclude app-id=r#"firefox$|^zen$|Nautilus$"#
     opacity 0.9
 }
 
 window-rule {
     match is-focused=true
-    exclude app-id=r#"firefox$|^zen$"#
+    exclude app-id=r#"firefox$|^zen$|Nautilus$"#
     opacity 0.97
 }
 
