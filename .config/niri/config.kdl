@@ -420,7 +420,7 @@ window-rule {
     // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
     exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm"#
     open-on-workspace "3"
-    // open-fullscreen true
+    open-fullscreen true
     open-focused true
 }
 
@@ -446,6 +446,7 @@ binds {
     // Notifications (mako)
     Mod+Apostrophe { spawn "makoctl" "dismiss"; }
     Mod+Shift+Apostrophe { spawn "makoctl" "dismiss" "--all"; }
+    Mod+Alt+Apostrophe { spawn "makoctl" "restore"; }
     Mod+Ctrl+Apostrophe { spawn-sh "makoctl mode -t do-not-disturb && makoctl mode | grep -q 'do-not-disturb' && notify-send \"Silenced notifications\" || notify-send \"Enabled notifications\""; }
 
     // Utilities
