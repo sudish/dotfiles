@@ -76,6 +76,7 @@
 .local/share/
 .local/state/
 .npm/
+.nv/
 .pki/
 .pulse-cookie
 .python_history
