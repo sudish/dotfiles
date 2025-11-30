@@ -424,6 +424,34 @@ window-rule {
 //     open-focused true
 // }
 
+recent-windows {
+    // off
+
+    // Delay, in milliseconds, between the window receiving focus and getting "committed" to the recent windows list.
+    debounce-ms 750
+    // Delay, in milliseconds, between pressing the Alt-Tab bind and the recent windows switcher visually appearing on screen.
+    open-delay-ms 150
+
+    highlight {
+        active-color "#33ccffee"
+        urgent-color "#ff9999ff"
+        padding 15
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
 binds {
     // Omarchy bindings first, see below for Niri defaults
 
