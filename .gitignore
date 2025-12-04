@@ -38,6 +38,7 @@
 .config/hypr/xdph.conf
 .config/ibus/
 .config/imv/
+.config/jackify/
 .config/kitty/
 .config/lact/
 .config/lazydocker/
@@ -96,6 +97,7 @@ Desktop/
 Documents/
 Downloads/
 Games/
+Jackify/
 Pictures/
 Steam
 Work/
