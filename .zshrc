@@ -86,9 +86,9 @@ VERSION_CONTROL=existing	# GNU patch
 #LESS=-R
 
 if hash eza &>/dev/null; then
-    alias l='eza -al --group-directories-first --icons=auto'
+    alias l='eza -aal --group-directories-first --icons=auto'
     alias lt='eza --tree --level=2 --long --icons --git'
-    alias lta='lt -a'
+    alias lta='lt -aa'
 else
     # enable color ls o/p
     LS_COLOR_OPTS='--color=tty'
