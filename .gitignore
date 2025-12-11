@@ -57,6 +57,7 @@
 .config/qalculate/
 .config/spotify/
 .config/starship.toml
+.config/steamtinkerlaunch/
 .config/swayosd/
 .config/systemd/user/elephant.service
 .config/systemd/user/graphical-session.target.wants/
@@ -104,3 +105,4 @@ Work/
 go/
 modlist.txt
 src/
+stl/

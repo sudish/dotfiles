@@ -190,3 +190,6 @@ source ~/.zsh.d/submodules/zsh-history-substring-search/zsh-history-substring-se
 # bind to control up- and down-arrow
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
+
+# Added by ProtonUp-Qt on 11-12-2025 17:28:27
+if [ -d "/home/sj/stl/prefix" ]; then export PATH="$PATH:/home/sj/stl/prefix"; fi
