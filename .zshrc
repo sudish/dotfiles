@@ -45,12 +45,6 @@ sys_init=$ZDIR/init.d/sysinit-$(uname -o)
 [[ -r $sys_init ]] && source $sys_init
 unset sys_init
 
-# Load various startup files, prioritized by name
-for file in $ZDIR/init.d/S[0-9][0-9]_*; do
-    source $file
-done
-unset file
-
 # directory and host shortcuts
 for file in zdirs zhosts; do
     [[ -r $ZDIR/$file ]]  && source $ZDIR/$file
@@ -190,6 +184,12 @@ source ~/.zsh.d/submodules/zsh-history-substring-search/zsh-history-substring-se
 # bind to control up- and down-arrow
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
+
+# Load various startup files, prioritized by name
+for file in $ZDIR/init.d/S[0-9][0-9]_*; do
+    source $file
+done
+unset file
 
 # Added by ProtonUp-Qt on 11-12-2025 17:28:27
 if [ -d "/home/sj/stl/prefix" ]; then export PATH="$PATH:/home/sj/stl/prefix"; fi
