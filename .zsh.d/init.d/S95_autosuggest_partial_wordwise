@@ -1,0 +1,30 @@
+# Move to end of history suggestion on right arrow, but by word on Control-right
+#
+# Taken from https://www.reddit.com/r/zsh/comments/hextyh/zshautosuggestions_use_arrow_left_for_partial/
+# but modified to keep the default end-of-line behavior on right arrow.
+
+# This MUST load late, after zsh-autosuggestions and -highlighting else it will
+# break zsh-autosuggestions completely.
+
+# Remove forward-char widgets from ACCEPT
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#end-of-line}")
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward-char}")
+
+# Add forward-char widgets to PARTIAL_ACCEPT
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(end-of-line-char)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(vi-forward-char)
+
+# Add custom widget to complete partial if cursor is at end of buffer
+autosuggest_partial_wordwise () {   
+    if [[ $CURSOR -lt ${#BUFFER} && $KEYMAP != vicmd ||
+          $CURSOR -lt $((${#BUFFER} - 1)) ]]; then
+      zle end-of-line
+    else
+      zle forward-word
+    fi
+}
+zle -N autosuggest_partial_wordwise 
+bindkey "^[[1;5C" autosuggest_partial_wordwise
+
+# Add autosuggest_partial_wordwise to IGNORE
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(autosuggest_partial_wordwise)
