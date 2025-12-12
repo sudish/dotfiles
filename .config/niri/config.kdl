@@ -418,6 +418,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="yad$"
+    open-floating true
+}
+
 // Steam: open games in their own workspace
 // window-rule {
 //     match app-id="^steam_app_"
