@@ -120,7 +120,10 @@ alias m='less -R'
 alias md=mkdir
 alias v=nvim
 alias wh='whence -csa'
-alias c=chezmoi
+
+# Skyrim
+alias vortex="steamtinkerlaunch vortex start >&/dev/null & disown"
+alias bethini="protontricks-launch --appid 489830 ~/Games/Skyrim/Bethini\ Pie/Bethini.exe"
 
 # global aliases, active anywhere on a line
 alias -g '*F'='**/*(.)'  # grep foo *F -> all files, including subdirs
