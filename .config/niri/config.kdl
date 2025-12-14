@@ -424,15 +424,13 @@ window-rule {
 }
 
 // Steam: open games in their own workspace
-// window-rule {
-//     match app-id="^steam_app_"
-//     // Skip MO2 and its dialogs.
-//     // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
-//     exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
-//     open-on-workspace "3"
-//     //open-fullscreen true
-//     open-focused true
-// }
+window-rule {
+    match app-id="^steam_app_"
+    // Skip MO2 and its dialogs.
+    // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
+    exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
+    open-on-workspace "3"
+}
 
 recent-windows {
     // off
