@@ -121,6 +121,11 @@ alias md=mkdir
 alias v=nvim
 alias wh='whence -csa'
 
+# sudo convenience
+alias btr='sudo btrfs'
+alias snroot='sudo snapper -c root'
+alias snhome='sudo snapper -c home'
+
 # Skyrim
 alias vortex="steamtinkerlaunch vortex start >&/dev/null & disown"
 alias bethini="protontricks-launch --appid 489830 ~/Games/Skyrim/Bethini\ Pie/Bethini.exe"
