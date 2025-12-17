@@ -36,6 +36,7 @@
 .config/hypr/hyprsunset.conf
 .config/hypr/looknfeel.conf
 .config/hypr/xdph.conf
+.config/hyprland-preview-share-picker/
 .config/ibus/
 .config/imv/
 .config/jackify/
