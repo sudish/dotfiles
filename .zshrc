@@ -120,6 +120,7 @@ alias m='less -R'
 alias md=mkdir
 alias v=nvim
 alias wh='whence -csa'
+alias j=z # the muscle memory is still strong from zoxide's ancient progenitor
 
 # sudo convenience
 alias btr='sudo btrfs'
