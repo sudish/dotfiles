@@ -508,7 +508,7 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
     // This works with Niri
-    Mod+Print { spawn-sh "pkill hyprpicker || hyprpicker -a"; }
+    Mod+P { spawn-sh "pkill hyprpicker || hyprpicker -a"; }
 
     // Idle and nightlight toggles
     // Mod+Ctrl+I { spawn "omarchy-toggle-idle"; }
