@@ -271,7 +271,9 @@ layout {
     tab-indicator {
         position "top"
         hide-when-single-tab
-        place-within-column
+        // place-within-column
+        width 3
+        gap 4
         corner-radius 2
         gaps-between-tabs 4
         inactive-color "#799959aa"
@@ -774,7 +776,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+Ctrl+T { toggle-column-tabbed-display; }
+    Mod+T { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
