@@ -280,6 +280,19 @@ layout {
     }
 }
 
+environment {
+    // Set a variable like this:
+    // QT_QPA_PLATFORM "wayland"
+
+    // Remove a variable by using null as the value:
+    // DISPLAY null
+
+    // NVIDIA environment variables; from Omarchy's hyprland configs
+    NVD_BACKEND "direct"
+    LIBVA_DRIVER_NAME "nvidia"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+}
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
