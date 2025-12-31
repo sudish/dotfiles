@@ -123,9 +123,16 @@ alias wh='whence -csa'
 alias j=z # the muscle memory is still strong from zoxide's ancient progenitor
 
 # sudo convenience
-alias btr='sudo btrfs'
 alias snroot='sudo snapper -c root'
 alias snhome='sudo snapper -c home'
+# Show space used by each snapshot for a volume. Non-empty argument should be a
+# volume mount point, like "home". If empty, the root volume "/" is assumed.
+sndu() {
+    local prefix=
+    [[ -n $1 ]] && prefix="/$1"
+    # we can't look into /.snapshots so the awkward double sudo here
+    sudo btrfs fi du -s $(sudo find $prefix/.snapshots -mindepth 1 -maxdepth 1)
+}
 
 # Skyrim
 alias vortex="steamtinkerlaunch vortex start >&/dev/null & disown"
