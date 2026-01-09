@@ -8,6 +8,7 @@
 .cache/
 .cargo/
 .chpwd-recent-dirs
+.claude/
 .config/.mozilla/
 .config/Code/
 .config/QtProject.conf
