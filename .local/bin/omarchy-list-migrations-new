@@ -1,0 +1,15 @@
+#!/bin/zsh
+#
+# List unapplied Omarchy migrations
+
+MIGRATIONS=~/.local/share/omarchy/migrations
+STATE=~/.local/state/omarchy/migrations
+
+die() { echo $*; exit 1; }
+
+cd "$MIGRATIONS" || die "Can't cd to $MIGRATIONS"
+[[ -d $STATE ]]  || die "$STATE not a directory"
+
+for i in *.sh; do
+  [[ -f $STATE/$i ]] || echo $i
+done
