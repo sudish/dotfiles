@@ -72,12 +72,14 @@
 .config/waybar/style.css
 .config/xournalpp/
 .config/zoomus.conf
+.cspell/
 .dotfiles/
 .dotnet/
 .gnupg/
 .keychain/
 .local/share/
 .local/state/
+.m2/
 .npm/
 .nv/
 .pki/
