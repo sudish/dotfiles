@@ -1,7 +1,7 @@
 [advice]
 	addIgnoredFile = false
 [alias]
-        st = status
+        st = status --short
         ci = commit
         co = checkout
         #up = remote update --prune
