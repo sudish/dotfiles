@@ -14,6 +14,7 @@
 .config/QtProject.conf
 .config/Swiftpoint X1 Control Panel/
 .config/Typora/
+.config/aether/
 .config/autostart/
 .config/brave-flags.conf
 .config/btop/
@@ -36,6 +37,7 @@
 .config/hypr/hyprlock.conf
 .config/hypr/hyprsunset.conf
 .config/hypr/looknfeel.conf
+.config/hypr/shaders/
 .config/hypr/xdph.conf
 .config/hyprland-preview-share-picker/
 .config/ibus/
@@ -50,6 +52,7 @@
 .config/mimeapps.list
 .config/mise/
 .config/niri/config.kdl.*
+.config/nvim.last-checked
 .config/nvim/plugin/
 .config/obsidian/
 .config/omarchy.ttf
