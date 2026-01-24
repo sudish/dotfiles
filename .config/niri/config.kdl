@@ -410,7 +410,7 @@ window-rule {
 // Citrix Workspace client
 window-rule {
     match app-id="^Wfica$"  // anchor regexp lest we match the Wfica_splash window
-    open-on-workspace "2"
+    open-on-workspace "Work"
     open-fullscreen true
     open-focused true
 }
@@ -440,7 +440,7 @@ window-rule {
     // Skip MO2 and its dialogs.
     // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
     exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
-    open-on-workspace "3"
+    open-on-workspace "Game"
 }
 
 recent-windows {
@@ -819,8 +819,6 @@ binds {
 }
 
 // Named workspaces as in Omarchy
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "4"
-workspace "5"
+workspace "Main"
+workspace "Work"
+workspace "Game"
