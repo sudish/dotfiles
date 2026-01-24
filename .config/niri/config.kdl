@@ -316,7 +316,7 @@ spawn-at-startup    "dbus-update-activation-environment" "--systemd" "--all"
 // End of Omarchy startup
 
 // Steam has problems starting after Citrix Workspace, so run it headless at login
-spawn-at-startup    "uwsm-app" "--" "steam" "-silent"
+// spawn-at-startup    "uwsm-app" "--" "steam" "-silent"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
