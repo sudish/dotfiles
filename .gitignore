@@ -80,6 +80,7 @@
 .dotfiles/
 .dotnet/
 .gnupg/
+.gradle/
 .keychain/
 .local/share/
 .local/state/
