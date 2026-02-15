@@ -31,6 +31,7 @@
 .config/gamma-launcher/
 .config/gh/
 .config/gtk-3.0/
+.config/htop/
 .config/hypr/autostart.conf
 .config/hypr/envs.conf
 .config/hypr/hyprland.conf
