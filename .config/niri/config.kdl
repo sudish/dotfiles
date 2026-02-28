@@ -424,7 +424,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="(ghostty|Nautilus)$"
+    match app-id="(Alacritty|ghostty|Nautilus)$"
     match app-id="^(code)$"
     default-column-width { proportion 0.28; }
 }
