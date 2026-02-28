@@ -11,5 +11,5 @@ cd "$MIGRATIONS" || die "Can't cd to $MIGRATIONS"
 [[ -d $STATE ]]  || die "$STATE not a directory"
 
 for i in *.sh; do
-  [[ -f $STATE/$i ]] || echo $i
+  [[ -f $STATE/$i ]] || [[ -f $STATE/skipped/$i ]] || echo $i
 done
