@@ -65,6 +65,7 @@
 .config/starship.toml
 .config/steamtinkerlaunch/
 .config/swayosd/
+.config/systemd/user/app-walker@autostart.service.d/
 .config/systemd/user/elephant.service
 .config/systemd/user/graphical-session.target.wants/
 .config/systemd/user/omarchy-battery-monitor.service
@@ -75,6 +76,7 @@
 .config/uwsm/
 .config/walker/
 .config/waybar/style.css
+.config/wiremix/
 .config/xournalpp/
 .config/zoomus.conf
 .cspell/
