@@ -1,0 +1,25 @@
+#!/bin/zsh
+#
+# Disconnect all BT devices with "controller" in their name.
+
+devices=( ${(f)"$(bluetoothctl devices Connected)"} )
+typeset -A disconnects=()
+
+for device in "$devices[@]"; do
+  mac=$(echo $device | awk '{print $2}')
+  name=$(echo $device | cut -d ' ' -f3-)
+  if echo $name | grep -i controller >&/dev/null; then
+    echo Detected: $name
+    disconnects[$mac]=$name
+  else
+    echo Skipping: $name
+  fi
+done
+
+if (( ${#disconnects[@]} > 0 )) && gum confirm "Proceed with disconnects?"; then
+  echo
+  for mac name in ${(kv)disconnects}; do
+    echo Disconnecting: $name
+    bluetoothctl disconnect $mac >&/dev/null
+  done
+fi
