@@ -481,8 +481,8 @@ binds {
 
     // App launcher and menus
     Mod+Space { spawn "omarchy-launch-walker"; }
-    Mod+Ctrl+E { spawn "omarchy-launch-walker" "-m" "symbols"; }
     Mod+Alt+Space { spawn "omarchy-menu"; }
+    Mod+E { spawn "omarchy-launch-walker" "-m" "symbols"; }
     Mod+Escape { spawn "omarchy-menu" "system"; }
     XF86PowerOff allow-when-locked=true { spawn "omarchy-menu" "system"; }
 
