@@ -1,0 +1,28 @@
+#!/bin/zsh
+#
+# Waybar module to display if any bluetooth controllers are connected.
+
+devices=( ${(f)"$(bluetoothctl devices Connected)"} )
+count=0
+controllers=
+
+for device in "$devices[@]"; do
+  name=$(echo $device | cut -d ' ' -f3-)
+  if echo $name | grep -i controller >&/dev/null; then
+    if [[ -z $controllers ]]; then
+      controllers=$name
+    else
+      controllers="$controllers, $name"
+    fi
+    (( count++ ))
+  fi
+done
+
+if [[ -n $controllers ]]; then
+  echo "Connected: $count ($controllers)"
+  exit 0
+else
+  echo "No connected controllers"
+fi
+
+exit 1
