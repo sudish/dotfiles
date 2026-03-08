@@ -532,7 +532,7 @@ binds {
     Mod+Shift+B { spawn "omarchy-launch-browser"; }
     Mod+Shift+Alt+B { spawn "omarchy-launch-browser" "--private"; }
     Mod+Shift+C { spawn "uwsm-app" "--" "code"; }
-    Mod+Shift+D { spawn-sh "omarchy-launch-tui bt-disconnect-controllers; omarchy-toggle-waybar"; }
+    Mod+Shift+D { spawn "bt-disconnect-controllers"; }
     Mod+Shift+E { spawn "uwsm-app" "--" "nautilus" "--new-window"; }
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
     Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-lock-screen"; }

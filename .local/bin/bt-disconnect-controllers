@@ -9,17 +9,25 @@ for device in "$devices[@]"; do
   mac=$(echo $device | awk '{print $2}')
   name=$(echo $device | cut -d ' ' -f3-)
   if echo $name | grep -i controller >&/dev/null; then
-    echo Detected: $name
     disconnects[$mac]=$name
   else
-    echo Skipping: $name
+    notify-send "Skipping disconnect: $name"
   fi
 done
 
-if (( ${#disconnects[@]} > 0 )) && gum confirm "Proceed with disconnects?"; then
-  echo
+if (( ${#disconnects[@]} > 0 )); then
+  # waybar can crash on bt disconnects so track & restore if needed
+  waybar_pid=$(pgrep -x waybar)
+
   for mac name in ${(kv)disconnects}; do
-    echo Disconnecting: $name
+    notify_id=$(notify-send -p "⏳️ Disconnecting: $name")
     bluetoothctl disconnect $mac >&/dev/null
+    notify-send -r $notify_id "✅ Disconnected: $name"
   done
+
+  if [[ -n $waybar_pid ]] && ! pgrep -x waybar >&/dev/null; then
+    setsid -f uwsm-app -- waybar >&/dev/null
+  fi
+else
+  notify-send "No controllers to disconnect"
 fi
