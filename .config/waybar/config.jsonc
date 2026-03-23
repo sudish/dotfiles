@@ -83,7 +83,7 @@
     "exec": "/home/sj/.local/bin/waybar-check-connected-controllers",
     "on-click": "/home/sj/.local/bin/bt-disconnect-controllers",
     "tooltip-format": "{}",
-    "interval": 60
+    "interval": 180
   },
 
   "cpu": {
