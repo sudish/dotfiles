@@ -106,6 +106,13 @@ input {
     // position x=1280 y=0
 }
 
+// Primary desktop
+output "LG Electronics 34GK950F 0x0000164C" { // "DP-1"
+    // mode "3440x1440@120.000"
+    mode "3440x1440@143.923"
+    variable-refresh-rate
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -347,6 +354,12 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
