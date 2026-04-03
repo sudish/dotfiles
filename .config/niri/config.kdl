@@ -110,7 +110,7 @@ input {
 output "LG Electronics 34GK950F 0x0000164C" { // "DP-1"
     // mode "3440x1440@120.000"
     mode "3440x1440@143.923"
-    variable-refresh-rate
+    variable-refresh-rate on-demand=true
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -322,8 +322,8 @@ spawn-sh-at-startup "systemctl --user import-environment $(env | cut -d'=' -f 1)
 spawn-at-startup    "dbus-update-activation-environment" "--systemd" "--all"
 // End of Omarchy startup
 
-// Steam has problems starting after Citrix Workspace, so run it headless at login
-spawn-at-startup    "uwsm-app" "--" "steam" "-silent"
+// Steam used to have problems starting after Citrix, so run it headless at login
+spawn-at-startup    "uwsm-app" "--" "mangohud" "steam" "-silent"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -448,14 +448,15 @@ window-rule {
     open-floating true
 }
 
-// Steam: open games in their own workspace
-// window-rule {
-//     match app-id="^steam_app_"
-//     // Skip MO2 and its dialogs.
-//     // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
-//     exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
-//     open-on-workspace "Game"
-// }
+// Steam
+window-rule {
+    match app-id="^steam_app_"
+    // Skip MO2 and its dialogs.
+    // "Mod ?Organizer" matches "ModOranizer" the MO2 start pop-up & main window both.
+    exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
+    variable-refresh-rate true
+    // open-on-workspace "Game"
+}
 
 recent-windows {
     // off
@@ -550,7 +551,7 @@ binds {
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
     Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-lock-screen"; }
     Mod+Shift+N { spawn "omarchy-launch-editor"; }
-    Mod+Shift+S { spawn "uwsm-app" "--" "steam"; }
+    Mod+Shift+S { spawn "uwsm-app" "--" "mangohud" "steam";  }
     Mod+Shift+T { spawn "uwsm-app" "--" "ghostty"; }
     Mod+Return  { spawn-sh "dir=$(omarchy-cmd-terminal-cwd); exec uwsm-app -- \"$TERMINAL\" --working-directory=\"$dir\""; }
 
