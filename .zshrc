@@ -167,7 +167,7 @@ bindkey ' ' magic-space
 bindkey '' backward-delete-char
 bindkey '' backward-delete-char
 
-# search history using entered prefix.
+# search history using entered prefix
 bindkey '\e[1;5A' history-beginning-search-backward
 bindkey '\e[1;5B' history-beginning-search-forward
 
@@ -200,6 +200,7 @@ source ~/.zsh.d/submodules/zsh-history-substring-search/zsh-history-substring-se
 # bind to control up- and down-arrow
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_FUZZY=yes
 
 # Load various startup files, prioritized by name
 for file in $ZDIR/init.d/S[0-9][0-9]_*; do
