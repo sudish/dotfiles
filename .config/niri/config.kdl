@@ -112,6 +112,14 @@ output "LG Electronics 34GK950F 0x0000164C" { // "DP-1"
     variable-refresh-rate // on-demand=true
 }
 
+// Laptop - omelette
+output "LG Display 0x0588 Unknown" { // "eDP-1"
+   layout {
+       preset-column-widths { proportion 0.5; }
+       default-column-width { proportion 0.5; }
+   }
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
