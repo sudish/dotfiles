@@ -330,7 +330,7 @@ spawn-at-startup    "dbus-update-activation-environment" "--systemd" "--all"
 // End of Omarchy startup
 
 // Steam used to have problems starting after Citrix, so run it headless at login
-spawn-at-startup    "uwsm-app" "--" "mangohud" "steam" "-silent"
+spawn-at-startup    "uwsm-app" "--" "mangohud" "steam" "-silent" "-console"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -557,7 +557,7 @@ binds {
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
     Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-lock-screen"; }
     Mod+Shift+N { spawn "omarchy-launch-editor"; }
-    Mod+Shift+S { spawn "uwsm-app" "--" "mangohud" "steam";  }
+    Mod+Shift+S { spawn "uwsm-app" "--" "mangohud" "steam" "-console";  }
     Mod+Shift+T { spawn "uwsm-app" "--" "ghostty"; }
     Mod+Return  { spawn-sh "dir=$(omarchy-cmd-terminal-cwd); exec uwsm-app -- \"$TERMINAL\" --working-directory=\"$dir\""; }
 

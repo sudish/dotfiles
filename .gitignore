@@ -11,6 +11,7 @@
 .claude/
 .config/.mozilla/
 .config/Code/
+.config/ProtonPlus
 .config/QtProject.conf
 .config/Swiftpoint X1 Control Panel/
 .config/Typora/
@@ -74,6 +75,7 @@
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/uwsm/
+.config/volt-gui
 .config/walker/
 .config/waybar/style.css
 .config/wiremix/
