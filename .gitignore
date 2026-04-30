@@ -100,6 +100,7 @@
 .steampath
 .steampid
 .vscode/
+.vscode-shared/sharedStorage/
 .wget-hsts
 .wine/
 .zcompdump
