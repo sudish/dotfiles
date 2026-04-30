@@ -21,4 +21,9 @@ sj_setup_ssh_agent() {
     fi
 }
 
+# clear up agent socket if there's none running
+if ! pgrep ssh-agent >&/dev/null; then
+    rm -f ~/.ssh/agent/*
+fi
+
 sj_setup_ssh_agent
