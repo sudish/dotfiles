@@ -320,9 +320,9 @@ spawn-sh-at-startup "uwsm-app -- swayidle -C ~/.config/swayidle/config"
 spawn-at-startup    "uwsm-app" "--" "mako"
 spawn-at-startup    "uwsm-app" "--" "waybar"
 spawn-at-startup    "uwsm-app" "--" "fcitx5" "--disable" "notificationitem"
-spawn-at-startup    "uwsm-app" "--" "swayosd-server"
 spawn-at-startup    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup    "omarchy-cmd-first-run"
+// spawn-at-startup    "omarchy-first-run"
+spawn-at-startup    "/home/sj/.local/share/omarchy/bin//omarchy-powerprofiles-init"
 
 // Slow app launch fix -- set systemd vars
 spawn-sh-at-startup "systemctl --user import-environment $(env | cut -d'=' -f 1)"
