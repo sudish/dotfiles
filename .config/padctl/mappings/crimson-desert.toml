@@ -1,0 +1,31 @@
+# Device: Flydigi Vader 5 Pro
+name = "crimson"
+trigger_threshold = 100
+
+[remap]
+# LB / RB / LS / RS are important in this game, use the paddles
+M1 = "RB"
+M3 = "RS"
+M2 = "LB"
+M4 = "LS"
+# LM = "LB"
+# RM = "RB"
+
+# unmap LS / RS as I  inadvertently click them too much
+LS = "disabled"
+RS = "disabled"
+
+# Map Inventory / Journal / Skills / Map menus
+C = "KEY_J"
+Z = "KEY_I"
+LM = "KEY_M"
+RM = "KEY_K"
+
+[gyro]
+mode        = "off"  # "joystick", "mouse" or "off"
+target      = "right_stick"
+activate    = "hold_LT"
+sensitivity = 50.0
+deadzone    = 10
+smoothing   = 0.1
+invert_y    = true
