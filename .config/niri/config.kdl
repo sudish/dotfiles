@@ -385,23 +385,27 @@ gestures {
 window-rule {
     match is-focused=false
     exclude app-id=r#"firefox$|^zen$|Nautilus$"#
+
     opacity 0.9
 }
 
 window-rule {
     match is-focused=true
     exclude app-id=r#"firefox$|^zen$|Nautilus$"#
+
     opacity 0.97
 }
 
 // Work around WezTerm's initial configure bug by setting an empty default-column-width.
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
+
     default-column-width {}
 }
 
 window-rule {
     match app-id=r#"(firefox|zen)$"# title="^Picture-in-Picture$"
+
     open-floating true
 }
 
@@ -413,6 +417,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"^1Password.*$"#
+
     block-out-from "screen-capture"
 }
 
@@ -425,12 +430,14 @@ window-rule {
     match app-id="zenity"  // System dialogs
     match app-id="polkit-gnome-authentication-agent-1"
     match app-id="bt-disconnect-controllers"
+
     open-floating true
 }
 
 // Citrix Workspace client
 window-rule {
     match app-id="^Wfica$"  // anchor regexp lest we match the Wfica_splash window
+
     open-on-workspace "Work"
     open-fullscreen true
     open-focused true
@@ -441,17 +448,20 @@ window-rule {
     match app-id=r#"^chrome-app\.zoom\.us"#
     default-column-width { proportion 0.28; }
     default-window-height { proportion 0.5; }
+
     opacity 1.0
 }
 
 window-rule {
     match app-id="(Alacritty|ghostty|Nautilus)$"
     match app-id="^(code)$"
+
     default-column-width { proportion 0.28; }
 }
 
 window-rule {
     match app-id="(yad|Calculator)$"
+
     open-floating true
 }
 
@@ -463,6 +473,16 @@ window-rule {
     // exclude title=r#"Mod ?Organizer|BAIN Package Installer|Choose Mod|Fatal Error|Confirm|Creating an instance"#
     // open-on-workspace "Game"
 // }
+
+// Steam notifications, typically controllers
+window-rule {
+    match app-id=r#"^stream$"#
+    match title=r#"^notificationtoasts_"#
+    match is-floating=true
+
+    open-focused false
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
 
 recent-windows {
     // off
