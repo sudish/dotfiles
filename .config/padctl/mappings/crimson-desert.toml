@@ -16,10 +16,10 @@ LS = "disabled"
 RS = "disabled"
 
 # Map Inventory / Journal / Skills / Map menus
-C = "KEY_J"
-Z = "KEY_I"
+C = "KEY_K"
+Z = "KEY_J"
 LM = "KEY_M"
-RM = "KEY_K"
+RM = "KEY_I"
 
 [gyro]
 mode        = "off"  # "joystick", "mouse" or "off"
