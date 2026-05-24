@@ -1,0 +1,5 @@
+version = 1
+
+[[device]]
+name = "Flydigi Vader 5 Pro"
+default_mapping = "crimson-desert:vader5pro"

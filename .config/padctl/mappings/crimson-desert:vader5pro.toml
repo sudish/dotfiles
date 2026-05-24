@@ -1,0 +1,31 @@
+# Device: Flydigi Vader 5 Pro
+name = "Crimson Desert:Vader 5 Pro"
+trigger_threshold = 100
+
+[remap]
+# LB / RB / LS / RS are important in this game, use the paddles
+M1 = "RB"
+M3 = "RS"
+M2 = "LB"
+M4 = "LS"
+
+# unmap LS / RS as I  inadvertently click them too much
+LS = "disabled"
+RS = "disabled"
+
+# Menu screens
+C = "KEY_K"                                 # Skills
+Z = "KEY_J"                                 # Journal
+# Z = { tap = "KEY_J", hold = "KEY_K" }       # Journal / Photo
+LM = "KEY_M"                                # Map
+RM = "KEY_I"                                # Inventory
+
+[gyro]
+mode        = "joystick"  # "joystick", "mouse" or "off"
+blend_stick = true
+target      = "right_stick"
+activate    = "LT"
+sensitivity = 50.0
+deadzone    = 10
+smoothing   = 0.1
+invert_y    = true
