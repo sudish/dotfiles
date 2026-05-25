@@ -15,8 +15,7 @@ RS = "disabled"
 
 # Menu screens
 C = "KEY_K"                                 # Skills
-Z = "KEY_J"                                 # Journal
-# Z = { tap = "KEY_J", hold = "KEY_K" }       # Journal / Photo
+Z = { tap = "KEY_J", hold = "KEY_P" }       # Journal / Photo
 LM = "KEY_M"                                # Map
 RM = "KEY_I"                                # Inventory
 
