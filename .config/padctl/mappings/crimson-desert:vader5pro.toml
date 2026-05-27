@@ -78,32 +78,32 @@ Start = "KEY_P"                             # Photo mode
 
 [[macro]]
 name = "blinding_flash"
-steps = [{ down = "RB" }, { down = "LB" }, "pause_for_release", { up = "LB" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "LB" }, "pause_for_release" ]
 
 [[macro]]
 name = "unarmed"
-steps = [{ down = "RB" }, { down = "X" }, "pause_for_release", { up = "X" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "X" }, "pause_for_release" ]
 
 [[macro]]
 name = "stab"
-steps = [{ down = "RB" }, { down = "Y" }, "pause_for_release", { up = "Y" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "Y" }, "pause_for_release" ]
 
 [[macro]]
 name = "spinning_slash"
-steps = [{ down = "RB" }, { down = "A" }, "pause_for_release", { up = "A" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "A" }, "pause_for_release" ]
 
 [[macro]]
 name = "evasive_slash"
-steps = [{ down = "RB" }, { down = "B" }, "pause_for_release", { up = "B" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "B" }, "pause_for_release" ]
 
 [[macro]]
 name = "turning_slash"
-steps = [{ down = "RB" }, { down = "RT" }, "pause_for_release", { up = "B" }, { up = "RB" }]
+steps = [ { press = "RB" }, { press = "RT" }, "pause_for_release" ]
 
 [[macro]]
 name = "shield_bash"
-steps = [{ down = "LB" }, { down = "RT" }, "pause_for_release", { up = "RT" }, { up = "RB" }]
+steps = [ { press = "LB" }, { press = "RT" }, "pause_for_release" ]
 
 [[macro]]
 name = "switch_weapon"
-steps = [{ down = "LB" }, { down = "LT" }, "pause_for_release", { up = "LT" }, { up = "LB" }]
+steps = [ { press = "LB" }, { press = "LT" }, "pause_for_release" ]
