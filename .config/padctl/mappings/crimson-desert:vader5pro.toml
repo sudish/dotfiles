@@ -53,7 +53,7 @@ A  = "macro:spinning_slash"
 B  = "macro:evasive_slash"
 # New bindings for convenience
 M2 = "RB"                                   # light attack, for combos
-LB = "macro:blinding_flash"
+LB = "macro:focus_mode"
 
 # Do the same things for LB+button chords.
 [[layer]]
@@ -107,3 +107,7 @@ steps = [ { press = "LB" }, { press = "RT" }, "pause_for_release" ]
 [[macro]]
 name = "switch_weapon"
 steps = [ { press = "LB" }, { press = "LT" }, "pause_for_release" ]
+
+[[macro]]
+name = "focus_mode"
+steps = [ { press = "LS" }, { press = "RS" }, "pause_for_release" ]
