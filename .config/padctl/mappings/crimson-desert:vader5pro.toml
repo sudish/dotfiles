@@ -1,6 +1,6 @@
 # Device: Flydigi Vader 5 Pro
 name = "Crimson Desert:Vader 5 Pro"
-trigger_threshold = 100
+trigger_threshold = 50
 
 [remap]
 # M1 = layer, mainly RB+button combos       # right front paddle
@@ -39,7 +39,7 @@ invert_y    = true
 # the overload of RB as both an attack button and a chording button.
 # The layer handles chords letting RB be just an attack button.
 [[layer]]
-name = "skills 1"
+name = "skills right"
 trigger = "M1"                              # right front paddle
 activation = "hold"
 hold_timeout = 1
@@ -52,12 +52,11 @@ Y  = "macro:stab"
 A  = "macro:spinning_slash"
 B  = "macro:evasive_slash"
 # New bindings for convenience
-M2 = "RB"                                   # light attack, for combos
 LB = "macro:focus_mode"
 
 # Do the same things for LB+button chords.
 [[layer]]
-name = "skills 2"
+name = "skills left"
 trigger = "M2"                              # left front paddle
 activation = "hold"
 hold_timeout = 1
@@ -67,9 +66,11 @@ hold_timeout = 1
 RT = "macro:shield_bash"
 LT = "macro:switch_weapon"
 # New bindings for convenience
-M1 = "RB"                                   # light attack, for combos
-X  = "macro:unarmed"
 RB = "macro:blinding_flash"
+X  = "macro:frost"
+Y  = "macro:flame"
+A  = "macro:wind"
+B  = "macro:lightning"
 
 # Menu screens
 C = "KEY_K"                                 # Skills
@@ -99,6 +100,22 @@ steps = [ { press = "RB" }, { press = "B" }, "pause_for_release" ]
 [[macro]]
 name = "turning_slash"
 steps = [ { press = "RB" }, { press = "RT" }, "pause_for_release" ]
+
+[[macro]]
+name = "frost"
+steps = [ { press = "RT" }, { press = "X" }, "pause_for_release" ]
+
+[[macro]]
+name = "flame"
+steps = [ { press = "RT" }, { press = "Y" }, "pause_for_release" ]
+
+[[macro]]
+name = "wind"
+steps = [ { press = "RT" }, { press = "A" }, "pause_for_release" ]
+
+[[macro]]
+name = "lightning"
+steps = [ { press = "RT" }, { press = "B" }, "pause_for_release" ]
 
 [[macro]]
 name = "shield_bash"
