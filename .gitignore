@@ -72,8 +72,10 @@
 .config/systemd/user/default.target.wants/padctl.service
 .config/systemd/user/elephant.service
 .config/systemd/user/graphical-session.target.wants/
+.config/systemd/user/graphical-session-pre.target.wants/
 .config/systemd/user/omarchy-battery-monitor.service
 .config/systemd/user/omarchy-battery-monitor.timer
+.config/systemd/user/omarchy-recover-internal-monitor.service
 .config/systemd/user/padctl.service
 .config/systemd/user/swayosd-server.service
 .config/systemd/user/timers.target.wants/
