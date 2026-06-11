@@ -26,7 +26,6 @@
 .config/dconf/
 .config/elephant/
 .config/environment.d/
-.config/fastfetch/
 .config/fcitx/
 .config/fcitx5/
 .config/fontconfig/
