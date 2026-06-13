@@ -87,6 +87,8 @@
 .config/wiremix/
 .config/wireplumber/wireplumber.conf.d/bluetooth-a2dp-autoconnect.conf
 .config/xournalpp/
+.config/zoom/
+.config/zoom.conf
 .config/zoomus.conf
 .cspell/
 .dotfiles/
@@ -112,6 +114,7 @@
 .wine/
 .zcompdump
 .zen/
+.zoom/
 .zoomvdi/
 .zsh_history
 Apps/
