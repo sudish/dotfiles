@@ -1,0 +1,20 @@
+# Device: Flydigi Vader 5 Pro
+name = "Default:Vader 5 Pro"
+#trigger_threshold = 100
+
+[remap]
+# I tend to click LS/RS inadvertently, unmap
+LS = "disabled"
+RS = "disabled"
+
+M1 = "RB"                                   # right front paddle
+M2 = "LB"                                   # Left front paddle
+M3 = "RS"                                   # right back paddle
+M4 = "LS"                                   # left back paddle
+RM = "RS"                                   # right extra bumper
+LM = "LS"                                   # left extra bumper
+# RB = left as is
+# LB = left as is
+
+C = "disabled"
+Z = "disabled"
