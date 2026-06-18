@@ -1,5 +1,6 @@
 # Device: Flydigi Vader 5 Pro
-name = "Default:Vader 5 Pro"
+name = "Default with Gyro:Vader 5 Pro"
+trigger_threshold = 100
 
 [remap]
 # I tend to click LS/RS inadvertently, unmap
@@ -15,5 +16,15 @@ LM = "LS"                                   # left extra bumper
 # RB = left as is
 # LB = left as is
 
-C = "disabled"
+C = "KEY_M"
 Z = "disabled"
+
+[gyro]
+mode        = "joystick"  # "joystick", "mouse" or "off"
+blend_stick = true
+target      = "right_stick"
+activate    = "LT"
+sensitivity = 200.0
+deadzone    = 10
+smoothing   = 0.1
+invert_y    = true
