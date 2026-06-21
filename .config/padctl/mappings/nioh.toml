@@ -1,0 +1,43 @@
+name = "Nioh"
+trigger_threshold = 100
+
+[remap]
+# I tend to click LS/RS inadvertently, unmap
+LS = "disabled"
+RS = "disabled"
+
+M1 = "RB"                                   # right front paddle
+M2 = "macro:high_stance"                    # Left front paddle
+M3 = "macro:low_stance"                     # right back paddle
+M4 = "macro:medium_stance"                  # left back paddle
+RM = "RS"                                   # right extra bumper
+# Extra LB mapping as LS isn't used by Nioh
+LM = "LB"                                   # left extra bumper
+# RB = left as is
+# LB = left as is
+
+C = "disabled"
+Z = "disabled"
+
+[gyro]
+mode        = "joystick"  # "joystick", "mouse" or "off"
+blend_stick = true
+target      = "right_stick"
+activate    = "LT"
+sensitivity = 200.0
+deadzone    = 10
+smoothing   = 0.1
+invert_y    = true
+
+# Add direct buttons for the stances, makes it much simpler
+[[macro]]
+name = "high_stance"
+steps = [ { press = "RB" }, { press = "Y" }, "pause_for_release" ]
+
+[[macro]]
+name = "medium_stance"
+steps = [ { press = "RB" }, { press = "X" }, "pause_for_release" ]
+
+[[macro]]
+name = "low_stance"
+steps = [ { press = "RB" }, { press = "A" }, "pause_for_release" ]
