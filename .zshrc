@@ -114,13 +114,14 @@ alias dcmp='git diff --no-index --name-status'
 alias egrep="grep -E $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
 alias fgrep="grep -F $GREP_COLOR_OPTS"
+alias j=z # the muscle memory is still strong from zoxide's ancient progenitor
 alias jobs='\jobs -lp'
 alias lg=lazygit
 alias m='less -R'
 alias md=mkdir
+alias uyay='yay -Syu && yay -Yc'
 alias v=nvim
 alias wh='whence -csa'
-alias j=z # the muscle memory is still strong from zoxide's ancient progenitor
 
 # sudo convenience
 alias snroot='sudo snapper -c root'
