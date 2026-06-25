@@ -575,7 +575,7 @@ binds {
     Mod+Shift+D { spawn "bt-disconnect-controllers"; }
     Mod+Shift+E { spawn "uwsm-app" "--" "nautilus" "--new-window"; }
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
-    Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-lock-screen"; }
+    Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-system-lock"; }
     Mod+Shift+N { spawn "omarchy-launch-editor"; }
     Mod+Shift+S { spawn "uwsm-app" "--" "mangohud" "steam" "-console";  }
     Mod+Shift+T { spawn "uwsm-app" "--" "ghostty"; }
