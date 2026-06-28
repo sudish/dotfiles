@@ -7,11 +7,10 @@ LS = "disabled"
 RS = "disabled"
 
 M1 = "RB"                                   # right front paddle
-M2 = "macro:high_stance"                    # Left front paddle
-M3 = "macro:low_stance"                     # right back paddle
-M4 = "macro:medium_stance"                  # left back paddle
-RM = "RS"                                   # right extra bumper
-# Extra LB mapping as LS isn't used by Nioh
+M2 = "LB"                                   # Left front paddle
+M3 = "RS"                                   # right back paddle
+M4 = "LS"                                   # left back paddle
+RM = "RB"                                   # right extra bumper
 LM = "LB"                                   # left extra bumper
 # RB = left as is
 # LB = left as is
@@ -29,6 +28,20 @@ deadzone    = 10
 smoothing   = 0.1
 invert_y    = true
 
+# RB is Ki Pulse + stance chord so set up a layer for just stances
+[[layer]]
+name = "stances+"
+trigger = "M4"                              # left back paddle
+activation = "hold"
+hold_timeout = 1
+
+[layer.remap]
+# Stances
+Y  = "macro:high_stance"
+X  = "macro:medium_stance"
+A  = "macro:low_stance"
+B  = "macro:sheathe"
+
 # Add direct buttons for the stances, makes it much simpler
 [[macro]]
 name = "high_stance"
@@ -41,3 +54,7 @@ steps = [ { press = "RB" }, { press = "X" }, "pause_for_release" ]
 [[macro]]
 name = "low_stance"
 steps = [ { press = "RB" }, { press = "A" }, "pause_for_release" ]
+
+[[macro]]
+name = "sheathe"
+steps = [ { press = "RB" }, { press = "B" }, "pause_for_release" ]
