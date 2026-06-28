@@ -19,13 +19,13 @@ C = "disabled"
 Z = "disabled"
 
 [gyro]
-mode        = "joystick"  # "joystick", "mouse" or "off"
+mode        = "joystick"                    # "joystick", "mouse" or "off"
 blend_stick = true
 target      = "right_stick"
 activate    = "LT"
 sensitivity = 200.0
-deadzone    = 10
-smoothing   = 0.1
+deadzone    = 1
+smoothing   = 0.4
 invert_y    = true
 
 # RB is Ki Pulse + stance chord so set up a layer for just stances

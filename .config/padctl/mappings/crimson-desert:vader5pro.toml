@@ -25,9 +25,9 @@ mode        = "joystick"  # "joystick", "mouse" or "off"
 blend_stick = true
 target      = "right_stick"
 activate    = "LT"
-sensitivity = 125.0
-deadzone    = 10
-smoothing   = 0.1
+sensitivity = 200.0
+deadzone    = 1
+smoothing   = 0.4
 invert_y    = true
 
 # CD's window for button chords is too tight plus RB is an action in
