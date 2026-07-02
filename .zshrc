@@ -153,9 +153,6 @@ source ~/.zsh.d/submodules/powerlevel10k/powerlevel9k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# zoxide
-eval "$(zoxide init zsh)"
-
 # cdr: persistent working directory history
 autoload -Uz chpwd_recent_dirs cdr
 add-zsh-hook chpwd chpwd_recent_dirs
@@ -202,6 +199,13 @@ source ~/.zsh.d/submodules/zsh-history-substring-search/zsh-history-substring-se
 bindkey '\e[A' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_FUZZY=yes
+
+# zoxide
+eval "$(zoxide init zsh)"
+# ${(qq)...} creates a single quoted string
+zoxide-fzf-paste() { LBUFFER+=${(qq)$(zoxide query -l | fzf)}  }
+zle -N zoxide-fzf-paste
+bindkey '\ev' zoxide-fzf-paste
 
 # Load various startup files, prioritized by name
 for file in $ZDIR/init.d/S[0-9][0-9]_*; do
