@@ -205,7 +205,7 @@ eval "$(zoxide init zsh)"
 # ${(qq)...} creates a single quoted string
 zoxide-fzf-paste() { LBUFFER+=${(qq)$(zoxide query -l | fzf)}  }
 zle -N zoxide-fzf-paste
-bindkey '\ev' zoxide-fzf-paste
+bindkey '\e/' zoxide-fzf-paste
 
 # Load various startup files, prioritized by name
 for file in $ZDIR/init.d/S[0-9][0-9]_*; do
