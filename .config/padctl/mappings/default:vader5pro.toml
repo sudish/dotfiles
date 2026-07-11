@@ -1,5 +1,6 @@
 # Device: Flydigi Vader 5 Pro
 name = "Default:Vader 5 Pro"
+output.emulate = "dualsense-edge"
 
 [remap]
 # I tend to click LS/RS inadvertently, unmap
@@ -17,3 +18,4 @@ LM = "LB"                                   # left extra bumper
 
 C = "KEY_M"
 Z = "disabled"
+O = "disabled"
