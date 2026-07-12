@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+#
+# Toggles muting of the focused window. Use as a Niri binding.
+
+die() { notify-send "⚠️  $1"; exit 0; }
+
+# takes $pid, $selector and returns sink input properties for $pid, filtered by $selector
+input_properties_for_pid() {
+  local pid="$1"
+  local selector="$2"
+  [[ -z $selector ]] && die "empty selector"
+
+  local filter=".[] | select(.properties.\"application.process.id\" == \$pid) | $selector"
+  pactl -f json list sink-inputs | jq -r --arg pid "$pid" "$filter"
+}
+
+# ask Niri for the focused window's PID
+pid=$(niri msg --json windows | jq -r '.[] | select(.is_focused == true) | .pid')
+[[ -z $pid || $pid == null ]] && die "mute-focused-window: no pid!"
+
+# get the list of PipeWire sink input indexes associated with this PID
+# there can be multiple inputs - e.g., a browser with multiple youtube tabs
+sink_inputs=$(input_properties_for_pid "$pid" '.index')
+[[ -z $sink_inputs ]] && die "Can't mute focused window, not audio source"
+
+# toggle muting
+for input in $sink_inputs; do
+  pactl set-sink-input-mute "$input" toggle
+
+  # pop up a notification with status and app name
+  media_name=$(input_properties_for_pid "$pid" "select(.index == $input) | .properties.\"media.name\"")
+  muted=$(input_properties_for_pid "$pid" "select(.index == $input) | .mute")
+  if [[ $muted == true ]]; then
+    mute_status="Muted"
+  else
+    mute_status="Unmuted"
+  fi
+  notify-send "$mute_status: $media_name"
+done

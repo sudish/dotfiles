@@ -556,7 +556,7 @@ binds {
     Alt+XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "+1"; }
     Alt+XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "-1"; }
 
-    Mod+XF86AudioMute { spawn "omarchy-cmd-audio-switch"; }
+    Mod+XF86AudioMute { spawn "omarchy-audio-output-switch"; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
@@ -576,6 +576,7 @@ binds {
     Mod+Shift+E { spawn "uwsm-app" "--" "nautilus" "--new-window"; }
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
     Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-system-lock"; }
+    Mod+Alt+M   { spawn "uwsm-app" "--" "mute-focused-window"; }
     Mod+Shift+N { spawn "omarchy-launch-editor"; }
     Mod+Shift+S { spawn "uwsm-app" "--" "mangohud" "steam" "-console";  }
     Mod+Shift+T { spawn "uwsm-app" "--" "ghostty"; }
