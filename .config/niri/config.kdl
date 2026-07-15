@@ -109,7 +109,7 @@ input {
 // Primary desktop
 output "LG Electronics 34GK950F 0x0000164C" { // "DP-1"
     mode "3440x1440@120.000"
-    variable-refresh-rate // on-demand=true
+    // variable-refresh-rate // on-demand=true
 }
 
 // Laptop - omelette
