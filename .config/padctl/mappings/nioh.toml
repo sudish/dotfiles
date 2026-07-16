@@ -17,6 +17,7 @@ LM = "LB"                                   # left extra bumper
 
 C = "disabled"
 Z = "disabled"
+O = "disabled"
 
 [gyro]
 mode        = "joystick"                    # "joystick", "mouse" or "off"

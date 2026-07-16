@@ -19,6 +19,7 @@ RS = "disabled"
 # Menu screens
 C = "KEY_M"                                 # Map
 Z = "KEY_I"                                 # Inventory
+O = "disabled"
 
 [gyro]
 mode        = "joystick"  # "joystick", "mouse" or "off"
