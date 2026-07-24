@@ -465,6 +465,18 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="^imhex$"
+
+    open-floating false
+}
+
+window-rule {
+    match title="^DARK SOULS III$"
+
+    open-fullscreen true
+}
+
 // Steam
 // window-rule {
     // match app-id="^steam_app_"
