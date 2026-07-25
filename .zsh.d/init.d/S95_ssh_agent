@@ -4,26 +4,23 @@
 #
 
 sj_setup_ssh_agent() {
-    local kcfiles keyhost
-    keyhost=sudish		# use a fixed hostname, no nfs here
-    
-    if [[ `whoami` == 'sj' || `whoami` == 'sudish' ]]; then
-	kcfiles=()
-	for keyfile in `cat ~/.ssh/agent-keyfiles 2>/dev/null`; do
-	    [[ -r ~/.ssh/$keyfile ]] && kcfiles+="$keyfile"
-	done
-	if [[ -n $kcfiles ]] ; then
-	    eval $(keychain --eval --host "$keyhost" -q "$kcfiles[@]")
-	#else
-	#    fgrep ForwardAgent ~/.ssh/config >&| /dev/null || \
-	#	echo "No keyfiles for ssh_agent or ForwardAgent!"
-	fi
+  local kcfiles keyhost
+  keyhost=sudish        # use a fixed hostname, no nfs here
+ 
+  if [[ `whoami` == 'sj' || `whoami` == 'sudish' ]]; then
+    kcfiles=()
+    for keyfile in `cat ~/.ssh/agent-keyfiles 2>/dev/null`; do
+      [[ -r ~/.ssh/$keyfile ]] && kcfiles+="$keyfile"
+    done
+    if [[ -n $kcfiles ]] ; then
+      eval $(keychain add --eval --host "$keyhost" -q "$kcfiles[@]")
     fi
+  fi
 }
 
 # clear up agent socket if there's none running
 if ! pgrep ssh-agent >&/dev/null; then
-    rm -f ~/.ssh/agent/*
+  rm -f ~/.ssh/agent/*
 fi
 
 sj_setup_ssh_agent
