@@ -13,7 +13,7 @@ sj_setup_ssh_agent() {
       [[ -r ~/.ssh/$keyfile ]] && kcfiles+="$keyfile"
     done
     if [[ -n $kcfiles ]] ; then
-      eval $(keychain add --eval --host "$keyhost" -q "$kcfiles[@]")
+      eval $(keychain --eval --host "$keyhost" -q "$kcfiles[@]")
     fi
   fi
 }
