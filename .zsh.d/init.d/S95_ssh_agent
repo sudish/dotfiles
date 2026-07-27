@@ -13,14 +13,14 @@ sj_setup_ssh_agent() {
       [[ -r ~/.ssh/$keyfile ]] && kcfiles+="$keyfile"
     done
     if [[ -n $kcfiles ]] ; then
-      eval $(keychain --eval --host "$keyhost" -q "$kcfiles[@]")
+      # For running at shell startup use this variant
+      #eval $(keychain add --eval --host "$keyhost" -q --immediate --quick "$kcfiles[@]")
+      # This is more suited to running interactively, on-demand
+      eval $(keychain add --eval --host "$keyhost" "$kcfiles[@]")
     fi
   fi
 }
 
-# clear up agent socket if there's none running
-if ! pgrep ssh-agent >&/dev/null; then
-  rm -f ~/.ssh/agent/*
-fi
-
-sj_setup_ssh_agent
+# Don't autostart ssh-agent anymore, rather do it manually only when needed
+#sj_setup_ssh_agent
+alias kc=sj_setup_ssh_agent
