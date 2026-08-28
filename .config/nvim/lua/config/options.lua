@@ -20,6 +20,3 @@ vim.opt.inccommand = "split"
 
 -- LazyVim options
 vim.g.autoformat = false
-
--- Neovim 0.12+
-vim.o.autocomplete = true
