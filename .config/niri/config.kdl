@@ -107,6 +107,13 @@ input {
 }
 
 // Primary desktop
+output "Dell Inc. AW3926QW B2VP6K4" { // "DP-1"
+    mode "5120x2160@165.000"
+    scale 1.25
+    // variable-refresh-rate // on-demand=true
+}
+
+// Primary desktop
 output "LG Electronics 34GK950F 0x0000164C" { // "DP-1"
     mode "3440x1440@120.000"
     // variable-refresh-rate // on-demand=true
@@ -187,7 +194,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-gradient from="#33ccffee" to="#00ff99ee" angle=45
+        // active-gradient from="#33ccffee" to="#00ff99ee" angle=45
+         active-gradient from="#bccb0088" to="#16ac0088" angle=45
 
         // Color of the ring on inactive monitors.
         //
@@ -315,10 +323,14 @@ environment {
 // Omarchy startup is from ~/.local/share/omarchy/default/hypr/autostart.conf and
 // xdg-desktop-autostart (~/.config/autostart/), which last is supported by Niri.
 // So this transcribes ~/.local/share/omarchy/default/hypr/autostart.conf.
-spawn-sh-at-startup "uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill"
+
+// spawn-sh-at-startup "uwsm-app -- swaybg -i ~/.config/omarchy/current/background -m fill"
+spawn-sh-at-startup "uwsm-app -- swaybg -c '#000000'"
+// spawn-at-startup    "uwsm-app" "--" "awww-daemon"
 spawn-sh-at-startup "uwsm-app -- swayidle -C ~/.config/swayidle/config"
 spawn-at-startup    "uwsm-app" "--" "mako"
-spawn-at-startup    "uwsm-app" "--" "waybar"
+// OLEDs don't like static taskbars, so we toggle this on-demand now
+// spawn-at-startup    "uwsm-app" "--" "waybar"
 spawn-at-startup    "uwsm-app" "--" "fcitx5" "--disable" "notificationitem"
 spawn-at-startup    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 // spawn-at-startup    "omarchy-first-run"
@@ -384,17 +396,17 @@ gestures {
 
 window-rule {
     match is-focused=false
-    exclude app-id=r#"firefox$|^zen$|Nautilus$"#
+    // exclude app-id=r#"firefox$|^zen$|Nautilus$"#
 
-    opacity 0.9
+    opacity 0.935
 }
 
-window-rule {
-    match is-focused=true
-    exclude app-id=r#"firefox$|^zen$|Nautilus$"#
-
-    opacity 0.97
-}
+// window-rule {
+//     match is-focused=true
+//     exclude app-id=r#"firefox$|^zen$|Nautilus$"#
+//
+//     opacity 0.97
+// }
 
 // Work around WezTerm's initial configure bug by setting an empty default-column-width.
 window-rule {
@@ -540,6 +552,7 @@ binds {
 
     // Theme and bar controls
     Mod+Shift+Space { spawn "omarchy-toggle-waybar"; }
+    Mod+Z           { spawn "omarchy-toggle-waybar"; }
     Mod+Ctrl+Space { spawn "omarchy-theme-bg-next"; }
     Mod+Shift+Ctrl+Space { spawn "omarchy-menu" "theme"; }
 
@@ -586,6 +599,7 @@ binds {
     Mod+Shift+C { spawn "uwsm-app" "--" "code"; }
     Mod+Shift+D { spawn "bt-disconnect-controllers"; }
     Mod+Shift+E { spawn "uwsm-app" "--" "nautilus" "--new-window"; }
+    Mod+Alt+E   { spawn "omarchy-capture-text-extraction"; }
     Mod+Shift+G { spawn "uwsm-app" "--" "lact"; }
     Mod+Alt+L   { spawn "uwsm-app" "--" "omarchy-system-lock"; }
     Mod+Alt+M   { spawn "uwsm-app" "--" "mute-focused-window"; }
@@ -601,7 +615,8 @@ binds {
     Mod+Ctrl+S { spawn "omarchy-menu" "share"; }
 
     // Waybar-less information
-    // Mod+Ctrl+T { spawn-sh "notify-send \"    $(date +\"%A %H:%M  —  %d %B W%V %Y\")\""; }
+    Mod+Ctrl+T { spawn-sh "notify-send \"    $(date +\"%D  %I:%M %p  -  %A, %d %B %Y\")\""; }
+    Mod+X      { spawn-sh "notify-send \"    $(date +\"%D  %I:%M %p  -  %A, %d %B %Y\")\""; }
     // Mod+Ctrl+B { spawn-sh "notify-send \"󰁹    Battery is at $(omarchy-battery-remaining)%\""; }
 
     // Window management
