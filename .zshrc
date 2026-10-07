@@ -114,7 +114,7 @@ alias dcmp='git diff --no-index --name-status'
 alias egrep="grep -E $GREP_COLOR_OPTS"
 alias grep="grep $GREP_COLOR_OPTS"
 alias fgrep="grep -F $GREP_COLOR_OPTS"
-alias j=z # the muscle memory is still strong from zoxide's ancient progenitor
+alias j=zi # the muscle memory is still strong from zoxide's ancient progenitor
 alias jobs='\jobs -lp'
 alias lg=lazygit
 alias m='less -R'
@@ -134,6 +134,9 @@ sndu() {
     # we can't look into /.snapshots so the awkward double sudo here
     sudo btrfs fi du -s $(sudo find $prefix/.snapshots -mindepth 1 -maxdepth 1)
 }
+
+# fzf keybindings: Ctrl-T Alt-C Ctrl-R
+source /usr/share/fzf/key-bindings.zsh
 
 # Skyrim
 alias vortex="steamtinkerlaunch vortex start >&/dev/null & disown"
