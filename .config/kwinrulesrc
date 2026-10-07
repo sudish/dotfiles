@@ -1,0 +1,17 @@
+[2b1039fb-c7bf-41f9-a4ba-2c1025f35651]
+Description=Citrix on Desktop 2
+desktops=bb3b1003-e9b1-4148-a59b-3b91bae421ae
+desktopsrule=3
+wmclass=Wfica
+wmclassmatch=1
+
+[General]
+count=2
+rules=2b1039fb-c7bf-41f9-a4ba-2c1025f35651,e9354cef-f5be-45cc-9616-e5256245ea2d
+
+[e9354cef-f5be-45cc-9616-e5256245ea2d]
+Description=Settings for .*
+noborder=true
+noborderrule=3
+wmclass=.*
+wmclassmatch=3
