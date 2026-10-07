@@ -111,6 +111,7 @@
 .config/systemd/user/omarchy-recover-internal-monitor.service
 .config/systemd/user/padctl.service
 .config/systemd/user/swayosd-server.service
+.config/systemd/user/swiftpoint-x1-control-panel.service
 .config/systemd/user/timers.target.wants/
 .config/systemmonitorrc
 .config/tool_state
