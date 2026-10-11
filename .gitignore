@@ -132,6 +132,7 @@
 .config/zoom/
 .config/zoomus.conf
 .cspell/
+.dart-tool/
 .dotfiles/
 .dotnet/
 .GA_ClientID
@@ -140,12 +141,15 @@
 .gtkrc-2.0
 .ICAClient/
 .keychain/
+.local/bin/crimson-desert-backup.sh
+.local/bin/launch-eldenring-mods.sh
 .local/share/
 .local/state/
 .m2/
 .npm/
 .nv/
 .pki/
+.pub-cache/
 .pulse-cookie
 .python_history
 .ssh/
