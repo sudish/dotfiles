@@ -300,6 +300,8 @@ _launch=Meta+X
 _launch=Meta+Shift+E
 
 [services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=none
+OpenWithoutScreenshot=none
 _launch=Print
 
 [services][systemsettings.desktop]
