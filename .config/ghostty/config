@@ -20,6 +20,9 @@ confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
 
+window-width = 120
+window-height = 40
+
 # Cursor styling
 cursor-style = "block"
 cursor-style-blink = false
