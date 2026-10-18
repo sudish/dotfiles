@@ -13,8 +13,11 @@ Usage:
                                 Steam library (combine with -u for leftovers)
   steamspace -C -S --delete     delete leftover folders of uninstalled games,
                                 after listing them and asking for confirmation
+  steamspace -G                 scan steamapps/common (installed game files) in
+                                every Steam library; folders no appmanifest claims
+                                are highlighted as uninstalled (combine with -u)
   steamspace -P                 list extra Proton versions (compatibilitytools.d)
-                                and their sizes; combine with -C/-S/-d
+                                and their sizes; combine with -C/-S/-G/-d
 
 Names come from local Steam library manifests (appmanifest_<id>.acf) first,
 then from the Steam store API. API results are cached in
@@ -25,6 +28,10 @@ appmanifest for it. Folders for apps without one are reported as
 "uninstalled" (leftovers that are usually safe to delete). IDs of 2^31 and
 up belong to non-Steam shortcuts and are reported as "non-Steam". ID 0 is
 Steam's own compatdata template and is reported as "internal".
+
+In steamapps/common (-G) folders are named after the game, not its app ID, so
+each folder is matched against the "installdir" of the appmanifests in the same
+library. A folder no manifest there claims is reported as "uninstalled".
 """
 
 import argparse
@@ -110,6 +117,24 @@ def local_names():
             if m_id and m_name:
                 names[m_id.group(1)] = m_name.group(1)
     return names
+
+
+def library_installdirs(lib):
+    """Map installdir -> (app ID, name) from the appmanifests in one steamapps dir."""
+    dirs = {}
+    for acf in lib.glob("appmanifest_*.acf"):
+        try:
+            text = acf.read_text(errors="replace")
+        except OSError:
+            continue
+        m_dir = re.search(r'"installdir"\s+"([^"]+)"', text)
+        if not m_dir:
+            continue
+        m_id = re.search(r'"appid"\s+"(\d+)"', text)
+        m_name = re.search(r'"name"\s+"([^"]*)"', text)
+        dirs[m_dir.group(1)] = (m_id.group(1) if m_id else UNKNOWN,
+                                m_name.group(1) if m_name else m_dir.group(1))
+    return dirs
 
 
 # ---------------------------------------------------------------- remote lookup
@@ -280,23 +305,90 @@ def scan_dir(base, args, local, have_libs):
     return rows
 
 
+# Folders Steam itself keeps in steamapps/common that no appmanifest claims.
+COMMON_INTERNAL = {
+    "Steam Controller Configs": "(Steam internal: controller configurations)",
+}
+
+
+def scan_common(base, args, other_libs):
+    """Rows (size, folder, label, state, path) for a steamapps/common dir, or None on error.
+
+    A folder is installed when an appmanifest in the same library names it as its
+    installdir. `other_libs` are the remaining libraries, used only to note when a
+    leftover folder belongs to a game that is installed somewhere else.
+    """
+    try:
+        subdirs = [e for e in os.scandir(base) if e.is_dir(follow_symlinks=False)]
+    except OSError as e:
+        print(f"steamspace: {e}", file=sys.stderr)
+        return None
+
+    here = library_installdirs(base.parent)
+    here_ci = {k.lower(): v for k, v in here.items()}
+    elsewhere = {}
+    for lib in other_libs:
+        for k, v in library_installdirs(lib).items():
+            elsewhere.setdefault(k.lower(), v)
+
+    seen = set()
+    rows = []
+    for e in subdirs:
+        match = here.get(e.name) or here_ci.get(e.name.lower())
+        if e.name in COMMON_INTERNAL:
+            state, label = "internal", COMMON_INTERNAL[e.name]
+        elif match:
+            state = "installed"
+            label = match[1] if match[1] != e.name else ""
+        else:
+            state = "uninstalled"
+            other = elsewhere.get(e.name.lower())
+            label = (f"(no appmanifest here; {other[1]} is installed in another library)"
+                     if other else "(no appmanifest)")
+        if args.uninstalled and state != "uninstalled":
+            continue
+        rows.append((disk_usage(e.path, seen), e.name, label, state, Path(e.path)))
+
+    if args.sort == "size":
+        rows.sort(key=lambda r: r[0], reverse=True)
+    elif args.sort == "id":
+        rows.sort(key=lambda r: r[1].lower())
+    else:
+        rows.sort(key=lambda r: (r[2] or r[1]).lower())
+    return rows
+
+
+def use_color():
+    return sys.stdout.isatty() and not os.environ.get("NO_COLOR") \
+        and os.environ.get("TERM") != "dumb"
+
+
+HIGHLIGHT = "\033[1;33m"  # bold yellow
+RESET = "\033[0m"
+
+
 def print_rows(base, rows, args):
     """Print the size/status/name table for one directory. Returns an exit code."""
     if not rows:
         if args.uninstalled:
             print("        (no leftovers from uninstalled apps)")
             return 0
-        print(f"steamspace: no app-ID subdirectories in {base}", file=sys.stderr)
+        what = "game folders" if base.name == "common" else "app-ID subdirectories"
+        print(f"steamspace: no {what} in {base}", file=sys.stderr)
         return 1
 
     id_w = max(len(r[1]) for r in rows)
+    color = use_color()
     total = leftover = n_leftover = 0
     for size, name, label, state, _ in rows:
         total += size
+        line = f"{human(size):>6}  {name:<{id_w}}  {state:<11}  {label}".rstrip()
         if state == "uninstalled":
             leftover += size
             n_leftover += 1
-        print(f"{human(size):>6}  {name:<{id_w}}  {state:<11}  {label}")
+            if color:
+                line = HIGHLIGHT + line + RESET
+        print(line)
     print(f"{human(total):>6}  {'total':<{id_w}}")
     if n_leftover and not args.uninstalled:
         s = "" if n_leftover == 1 else "s"
@@ -465,6 +557,9 @@ def main():
                     help="scan steamapps/compatdata in every Steam library")
     ap.add_argument("-S", "--shadercache", action="store_true",
                     help="scan steamapps/shadercache in every Steam library")
+    ap.add_argument("-G", "--common", action="store_true",
+                    help="scan steamapps/common (game install folders) in every Steam "
+                    "library and highlight folders of uninstalled games")
     ap.add_argument("-u", "--uninstalled", action="store_true",
                     help="only show apps that are not installed (leftover folders)")
     ap.add_argument("--delete", action="store_true",
@@ -480,12 +575,15 @@ def main():
                     help="ignore cached API results and look them up again")
     ap.add_argument("-P", "--proton", action="store_true",
                     help="list extra Proton versions in compatibilitytools.d with their "
-                    "sizes (alone, or together with -C/-S/--dir)")
+                    "sizes (alone, or together with -C/-S/-G/--dir)")
     args = ap.parse_args()
 
-    modes = sum(map(bool, (args.ids, args.dir, args.compatdata or args.shadercache)))
+    lib_scan = args.compatdata or args.shadercache or args.common
+    modes = sum(map(bool, (args.ids, args.dir, lib_scan)))
     if modes > 1:
-        ap.error("give only one of: app IDs, --dir, or -C/-S")
+        ap.error("give only one of: app IDs, --dir, or -C/-S/-G")
+    if args.delete and args.common:
+        ap.error("--delete doesn't work with -G; game folders in common/ are only reported")
     if args.delete and args.ids:
         ap.error("--delete works on directories (current dir, --dir, -C or -S), not app IDs")
     if args.proton and args.ids:
@@ -529,9 +627,12 @@ def main():
         return 0 if all(names.values()) else 1
 
     # --- directory mode
-    if args.compatdata or args.shadercache:
+    if lib_scan:
+        if args.common and not have_libs:
+            return 1
         wanted = [n for n, on in (("compatdata", args.compatdata),
-                                  ("shadercache", args.shadercache)) if on]
+                                  ("shadercache", args.shadercache),
+                                  ("common", args.common)) if on]
         dirs = [lib / n for n in wanted for lib in libs if (lib / n).is_dir()]
         if not dirs:
             print(f"steamspace: no {' or '.join(wanted)} folder found in any Steam library",
@@ -546,7 +647,10 @@ def main():
     rc = 0
     results = []
     for d in dirs:
-        rows = scan_dir(d, args, local, have_libs)
+        if args.common and d.name == "common" and d.parent in libs:
+            rows = scan_common(d, args, [l for l in libs if l != d.parent])
+        else:
+            rows = scan_dir(d, args, local, have_libs)
         if rows is None:
             rc = 1
         else:
