@@ -5,6 +5,7 @@
 .cache/
 .cargo/
 .chpwd-recent-dirs
+.claude.json
 .claude/
 .config/.mozilla/
 .config/aether/
@@ -47,6 +48,7 @@
 .config/imhex/
 .config/imv/
 .config/jackify/
+.config/kaccessrc
 .config/kactivitymanagerd-pluginsrc
 .config/kactivitymanagerd-statsrc
 .config/kactivitymanagerdrc
@@ -142,7 +144,9 @@
 .ICAClient/
 .keychain/
 .local/bin/crimson-desert-backup.sh
+.local/bin/lact-game-finished.sh
 .local/bin/launch-eldenring-mods.sh
+.local/bin/wear-report.py
 .local/share/
 .local/state/
 .m2/
