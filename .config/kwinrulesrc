@@ -5,18 +5,21 @@ desktopsrule=3
 wmclass=Wfica
 wmclassmatch=1
 
-[6ac28abc-7fb4-481a-a199-1551c2ca0783]
-Description=Settings for ^gamescope|^steam
-desktopsrule=5
-wmclass=^gamescope|^steam
-
 [General]
-count=2
-rules=2b1039fb-c7bf-41f9-a4ba-2c1025f35651,e9354cef-f5be-45cc-9616-e5256245ea2d
+Order=2b1039fb-c7bf-41f9-a4ba-2c1025f35651,e9354cef-f5be-45cc-9616-e5256245ea2d
 
 [e9354cef-f5be-45cc-9616-e5256245ea2d]
 Description=Settings for .*
-noborder=true
-noborderrule=3
+decorationpolicy=none
+decorationpolicyrule=3
 wmclass=.*
 wmclassmatch=3
+
+[steam]
+Description[$d]
+decorationpolicy[$d]
+decorationpolicyrule[$d]
+types[$d]
+wmclass[$d]
+wmclasscomplete[$d]
+wmclassmatch[$d]
