@@ -1,0 +1,48 @@
+# upwatch config. Each [[source]] is one thing to watch, or (type = "list") a file that lists more things.
+# Common keys: name (unique, used on the command line), type, tags = [...], enabled = true|false.
+
+[settings]
+# Nexus Mods personal API key file (owner-only permissions). Needed only by Nexus sources.
+nexus_key_file = "~/.config/nexus-apikey"
+# Optional GitHub token file: anonymous use allows 60 API calls an hour, plenty for a few sources.
+# github_token_file = "~/.config/upwatch/github-token"
+
+[[source]]
+name = "dlss"
+type = "github-release"
+repo = "NVIDIA/DLSS"
+tags = ["game"]
+installed = "310.9.16"
+
+[[source]]
+name = "ge-proton"
+type = "github-release"
+repo = "GloriousEggroll/proton-ge-custom"
+tags = ["proton"]
+# Installed version, found from what is on disk: an install whose folder name contains the latest tag is current.
+installed_glob = "~/.local/share/Steam/compatibilitytools.d/GE-Proton*"
+
+[[source]]
+name = "cachyos-proton"
+type = "github-release"
+repo = "CachyOS/proton-cachyos"
+tags = ["proton"]
+installed_glob = "~/.local/share/Steam/compatibilitytools.d/proton-cachyos*"
+# Or ask a command, e.g. the Arch package:  installed_cmd = "pacman -Q proton-cachyos"
+
+# A file that tracks more entities: the mod list the Witcher 3 layer writes (Nexus pages and GitHub repos).
+# The results are also written to nexus-status.json beside it, as the old nexus-check.py did.
+[[source]]
+name = "tw3"
+type = "list"
+format = "nexus-check"
+file = "/home/sj/src/claude-witcher-3/work/updates/nexus-check.json"
+game = "witcher3"
+tags = ["game"]
+
+# Other types:
+#   type = "github-commit"   repo = "owner/name"  branch = "main"        (newest commit on a branch)
+#   type = "nexus"           game = "witcher3"  mod_id = 1234  installed = "1.2"   (one Nexus page; without
+#                            installed, `upwatch ack NAME` records the version you have)
+# For any type without a way to know the installed version, the first check records the latest version as
+# yours, and later versions show as updates until you run `upwatch ack NAME`.

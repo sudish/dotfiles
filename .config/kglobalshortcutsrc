@@ -7,6 +7,11 @@ Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Ke
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
+[com.onepassword.OnePassword]
+19E74509D4F853F7E9E76DCDE4B1578E-=none,none,1Password shortcut:\s
+BAA878E84DFE0253301EEE8A4C91F492-Ctrl+Shift+Space=Ctrl+Shift+Space,Ctrl+Shift+Space,1Password shortcut: Ctrl+Shift+Space
+_k_friendly_name=1Password
+
 [kmix]
 _k_friendly_name=Audio Volume
 decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Decrease Microphone Volume
@@ -42,6 +47,10 @@ ExposeClass=Ctrl+F7\tMeta+F7,Ctrl+F7\tMeta+F7,Toggle Present Windows (Window cla
 ExposeClassCurrentDesktop=none,none,Toggle Present Windows (Window class on current desktop)
 Grid View=Meta+A,Meta+G,Toggle Grid View
 Increase Opacity=none,none,Increase Opacity of Active Window by 5%
+KeyHop Window Down=Meta+Down,none,KeyHop: Window Down
+KeyHop Window Up=Meta+Up,none,KeyHop: Window Up
+KeyHop Window to the Left=Meta+Left,none,KeyHop: Window to the Left
+KeyHop Window to the Right=Meta+Right,none,KeyHop: Window to the Right
 Kill Window=Meta+Ctrl+Esc,Meta+Ctrl+Esc,Kill Window
 Move Tablet to Next LogicalOutput=none,none,Move the tablet to the next output
 MoveMouseToCenter=Meta+F6,Meta+F6,Center Pointer in Screen
@@ -58,10 +67,10 @@ Switch One Desktop Down=Meta+Ctrl+Down,Meta+Ctrl+Down,Switch One Desktop Down
 Switch One Desktop Up=Meta+Ctrl+Up,Meta+Ctrl+Up,Switch One Desktop Up
 Switch One Desktop to the Left=Meta+Ctrl+Left,Meta+Ctrl+Left,Switch One Desktop to the Left
 Switch One Desktop to the Right=Meta+Ctrl+Right,Meta+Ctrl+Right,Switch One Desktop to the Right
-Switch Window Down=Meta+Down,Meta+Alt+Down,Switch to Window Below
-Switch Window Left=Meta+Left,Meta+Alt+Left,Switch to Window to the Left
-Switch Window Right=Meta+Right,Meta+Alt+Right,Switch to Window to the Right
-Switch Window Up=Meta+Up,Meta+Alt+Up,Switch to Window Above
+Switch Window Down=none,Meta+Alt+Down,Switch to Window Below
+Switch Window Left=none,Meta+Alt+Left,Switch to Window to the Left
+Switch Window Right=none,Meta+Alt+Right,Switch to Window to the Right
+Switch Window Up=none,Meta+Alt+Up,Switch to Window Above
 Switch to Desktop 1=Ctrl+F1\tMeta+1,Ctrl+F1\tMeta+F1,Switch to Desktop 1
 Switch to Desktop 10=none,none,Switch to Desktop 10
 Switch to Desktop 11=none,none,Switch to Desktop 11
@@ -204,34 +213,34 @@ view_zoom_in=Meta++\tMeta+=,Meta++\tMeta+=,Zoom In
 view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [kwin][$InverseAction]
-Cycle Overview Opposite=Cycle Overview
+Cycle Overview=Cycle Overview Opposite
 Increase Opacity=Decrease Opacity
+MoveZoomDown=MoveZoomUp
 MoveZoomLeft=MoveZoomRight
-MoveZoomUp=MoveZoomDown
-Switch One Desktop Down=Switch One Desktop Up
+Switch One Desktop Up=Switch One Desktop Down
 Switch One Desktop to the Left=Switch One Desktop to the Right
 Switch Window Down=Switch Window Up
-Switch Window Right=Switch Window Left
-Switch to Next Desktop=Switch to Previous Desktop
-Switch to Previous Screen=Switch to Next Screen
+Switch Window Left=Switch Window Right
+Switch to Next Screen=Switch to Previous Screen
+Switch to Previous Desktop=Switch to Next Desktop
 Switch to Screen Above=Switch to Screen Below
 Switch to Screen to the Right=Switch to Screen to the Left
-Walk Through Windows (Reverse)=Walk Through Windows
-Walk Through Windows Alternative=Walk Through Windows Alternative (Reverse)
+Walk Through Windows=Walk Through Windows (Reverse)
+Walk Through Windows Alternative (Reverse)=Walk Through Windows Alternative
 Walk Through Windows of Current Application (Reverse)=Walk Through Windows of Current Application
 Walk Through Windows of Current Application Alternative=Walk Through Windows of Current Application Alternative (Reverse)
-Window Grow Horizontal=Window Shrink Horizontal
-Window Grow Vertical=Window Shrink Vertical
+Window Lower=Window Raise
 Window One Desktop Up=Window One Desktop Down
 Window One Desktop to the Right=Window One Desktop to the Left
-Window One Screen Up=Window One Screen Down
+Window One Screen Down=Window One Screen Up
 Window One Screen to the Left=Window One Screen to the Right
+Window Pack Down=Window Pack Up
 Window Pack Right=Window Pack Left
-Window Pack Up=Window Pack Down
-Window Raise=Window Lower
-Window to Next Desktop=Window to Previous Desktop
+Window Shrink Horizontal=Window Grow Horizontal
+Window Shrink Vertical=Window Grow Vertical
+Window to Previous Desktop=Window to Next Desktop
 Window to Previous Screen=Window to Next Screen
-view_zoom_out=view_zoom_in
+view_zoom_in=view_zoom_out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
@@ -299,6 +308,9 @@ show-on-mouse-pos=Meta+V,Meta+V,Show Clipboard Items at Mouse Position
 switch to next activity=none,none,Switch to Next Activity
 switch to previous activity=none,none,Switch to Previous Activity
 toggle do not disturb=none,none,Toggle do not disturb
+
+[services][com.anthropic.Claude.desktop]
+_launch=Meta+Shift+L
 
 [services][com.microsoft.VSCode.desktop]
 _launch=Meta+Shift+C

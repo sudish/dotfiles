@@ -1,5 +1,5 @@
 [Daemon]
-LockGrace=60
+LockGrace=300
 Timeout=30
 
 [Greeter]
